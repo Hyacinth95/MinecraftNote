@@ -1,0 +1,249 @@
+command-aliases: class,classes,skill,skills
+
+# 启用或关闭技能连击
+combo:
+  enabled: true
+
+# 显示玩家血量和魔法值的Boss条
+boss-bar:
+  # 生命值
+  health:
+    # 启用或关闭Boss条
+    enabled: false
+    # 血条标题
+    # 占位符：
+    # - %cur% - 当前生命值
+    # - %max% - 最大生命值
+    title: '&c&lHealth &f%cur%&7/&f%max%'
+    # 血条颜色
+    # 可用值：BLUE、GREEN、PINK、PURPLE、RED、WHITE、YELLOW
+    color: RED
+    # 血条样式
+    # 可用值：SEGMENTED_10(分10段)、SEGMENTED_12、SEGMENTED_20、SEGMENTED_6、SOLID(不分段)
+    style: SOLID
+  # 魔力值
+  mana:
+    enabled: true
+    title: '&b&l魔力值 &f%cur%&7/&f%max%'
+    color: BLUE
+    style: SOLID
+
+# 职业选择设置
+selection:
+  # 新玩家自动默认选择的职业
+  # 关闭自动选择请设置为none，如果关闭会新玩家打开职业选择GUI
+  default-class: none
+  # 如果设置为true，玩家将无法重新选择职业，但是仍然可以改变他们的子职业
+  select-once: false
+  # 选择职业的冷却时间（分钟），可提供days,weeks等等
+  cooldown: 60
+  # 职业选择的GUI
+  gui:
+    # 自动弹出GUI
+    popup:
+      # 当玩家加入服务器并且没有职业的时候自动弹出
+      on-join: true
+      # 当子职业可用的时候自动弹出子职业选择GUI
+      on-child-level: true
+    # 职业主界面
+    type:
+      title: 选择职业
+      size: 27
+      content:
+        filler_1:
+          material: BLACK_STAINED_GLASS_PANE
+          name: '&7'
+          slots: 0,1,2,6,7,8,9,17,18,19,20,24,25,26
+        filler_2:
+          material: CYAN_STAINED_GLASS_PANE
+          name: '&7'
+          slots: 3,4,5,21,22,23
+        class_main:
+          material: BOOK
+          name: '&6选择主职业'
+          slots: 12
+          type: SELECT_MAIN
+        class_child:
+          material: EXPERIENCE_BOTTLE
+          name: '&e选择子职业'
+          slots: 14
+          type: SELECT_CHILD
+    # 主职业GUI
+    main:
+      # 当设置为false时，如果玩家未选择职业则不允许关闭界面
+      allow-close: true
+      # 展示职业图标的空格
+      class-slots: 10,11,12,13,14,15,16
+      title: 主职业选择
+      size: 27
+      # 其他自定义的物品
+      content:
+        filler_1:
+          material: BLACK_STAINED_GLASS_PANE
+          name: '&7'
+          slots: 0,1,2,6,7,8,9,17,18,19,20,24,25,26
+        filler_2:
+          material: CYAN_STAINED_GLASS_PANE
+          name: '&7'
+          slots: 3,4,5,21,22,23
+        later:
+          material: BARRIER
+          name: '&c稍后提醒我'
+          slots: '22'
+          type: EXIT
+        next:
+          material: ARROW
+          name: '&a下一页'
+          slots: '17'
+          type: NEXT
+        back:
+          material: ARROW
+          name: '&c上一页'
+          slots: '9'
+          type: BACK
+
+# 其他职业的GUI
+gui:
+  # 职业状态的GUI
+  class-stats:
+    title: 职业
+    size: 27
+    # 你自定义的物品。
+    # 占位符：
+    # - 这里支持PlaceholderAPI。
+    # - %class% - 玩家职业名称
+    # - %level% - 玩家职业等级
+    # - %level-max% - 玩家职业的最大等级
+    # - %exp% - 玩家职业等级的经验
+    # - %exp-max% - 玩家职业等级的最大经验
+    # - %skill-points% - 玩家的技能点数
+    # - %aspect-points% - 玩家的属性点数
+    # - %att_name_[ATTRIBUTE]% - [ATTRIBUTE]是属性标识符时，显示属性的名称
+    # - %att_total_[ATTRIBUTE]% - 属性总值
+    # - %att_start_[ATTRIBUTE]% - 属性起始值
+    # - %att_lvl_[ATTRIBUTE]% - 随着职业等级提升所增加的属性值
+    # - %att_aspect_[ATTRIBUTE]% - 属性点所提升的属性值
+    # - %stat_name_[STAT]% - [ATTRIBUTE]是状态标识符时，显示状态的名称
+    # - %stat_total_[STAT]% - 状态总值
+    # - %stat_start_[STAT]% - 状态起始值
+    # - %stat_lvl_[STAT]% - 随着职业等级提升所增加的状态值
+    # - %stat_aspect_[STAT]% - 属性点所提升的状态值
+    content:
+      exp_info:
+        material: EXPERIENCE_BOTTLE
+        name: '&e等级信息'
+        lore:
+        - '&7职业: &f%class%'
+        - '&7等级: &f%level%&7/&f%level-max%'
+        - '&7经验: &f%exp%&7/&f%exp-max%'
+        slots: 10
+      attributes:
+        material: BOOK
+        name: '&6属性'
+        lore:
+        - '&7%att_name_ARMOR%: &6%att_total_ARMOR% &7(&f%att_start_ARMOR% &7+ &f%att_lvl_ARMOR%
+          &7+ &f%att_aspect_ARMOR%&7)'
+        - '&7%att_name_ARMOR_TOUGHNESS%: &6%att_total_ARMOR_TOUGHNESS% &7(&f%att_start_ARMOR_TOUGHNESS%
+          &7+ &f%att_lvl_ARMOR_TOUGHNESS% &7+ &f%att_aspect_ARMOR_TOUGHNESS%&7)'
+        - '&7%att_name_ATTACK_DAMAGE%: &6%att_total_ATTACK_DAMAGE% &7(&f%att_start_ATTACK_DAMAGE%
+          &7+ &f%att_lvl_ATTACK_DAMAGE% &7+ &f%att_aspect_ATTACK_DAMAGE%&7)'
+        - '&7%att_name_ATTACK_SPEED%: &6%att_total_ATTACK_SPEED% &7(&f%att_start_ATTACK_SPEED%
+          &7+ &f%att_lvl_ATTACK_SPEED% &7+ &f%att_aspect_ATTACK_SPEED%&7)'
+        - '&7%att_name_FLYING_SPEED%: &6%att_total_FLYING_SPEED% &7(&f%att_start_FLYING_SPEED%
+          &7+ &f%att_lvl_FLYING_SPEED% &7+ &f%att_aspect_FLYING_SPEED%&7)'
+        - '&7%att_name_KNOCKBACK_RESISTANCE%: &6%att_total_KNOCKBACK_RESISTANCE% &7(&f%att_start_KNOCKBACK_RESISTANCE%
+          &7+ &f%att_lvl_KNOCKBACK_RESISTANCE% &7+ &f%att_aspect_KNOCKBACK_RESISTANCE%&7)'
+        - '&7%att_name_LUCK%: &6%att_total_LUCK% &7(&f%att_start_LUCK% &7+ &f%att_lvl_LUCK%
+          &7+ &f%att_aspect_LUCK%&7)'
+        - '&7%att_name_MAX_HEALTH%: &6%att_total_MAX_HEALTH% &7(&f%att_start_MAX_HEALTH%
+          &7+ &f%att_lvl_MAX_HEALTH% &7+ &f%att_aspect_MAX_HEALTH%&7)'
+        - '&7%att_name_MOVEMENT_SPEED%: &6%att_total_MOVEMENT_SPEED% &7(&f%att_start_MOVEMENT_SPEED%
+          &7+ &f%att_lvl_MOVEMENT_SPEED% &7+ &f%att_aspect_MOVEMENT_SPEED%&7)'
+        slots: 11
+      stats:
+        material: MAP
+        name: '&6状态'
+        lore:
+        - '&7%stat_name_COOLDOWN_REDUCE%: &6%stat_total_COOLDOWN_REDUCE% &7(&f%stat_start_COOLDOWN_REDUCE%
+          &7+ &f%stat_lvl_COOLDOWN_REDUCE% &7+ &f%stat_aspect_COOLDOWN_REDUCE%&7)'
+        - '&7%stat_name_EXP_BONUS%: &6%stat_total_EXP_BONUS% &7(&f%stat_start_EXP_BONUS%
+          &7+ &f%stat_lvl_EXP_BONUS% &7+ &f%stat_aspect_EXP_BONUS%&7)'
+        - '&7%stat_name_HEALTH_REGEN%: &6%stat_total_HEALTH_REGEN% &7(&f%stat_start_HEALTH_REGEN%
+          &7+ &f%stat_lvl_HEALTH_REGEN% &7+ &f%stat_aspect_HEALTH_REGEN%&7)'
+        - '&7%stat_name_MANA%: &6%stat_total_MANA% &7(&f%stat_start_MANA% &7+ &f%stat_lvl_MANA%
+          &7+ &f%stat_aspect_MANA%&7)'
+        - '&7%stat_name_MAX_MANA%: &6%stat_total_MAX_MANA% &7(&f%stat_start_MAX_MANA%
+          &7+ &f%stat_lvl_MAX_MANA% &7+ &f%stat_aspect_MAX_MANA%&7)'
+        - '&7%stat_name_MANA_REGEN%: &6%stat_total_MANA_REGEN% &7(&f%stat_start_MANA_REGEN%
+          &7+ &f%stat_lvl_MANA_REGEN% &7+ &f%stat_aspect_MANA_REGEN%&7)'
+        slots: 12
+        item-flags:
+        - '*'
+      skills:
+        material: GOLDEN_SWORD
+        name: '&e技能'
+        lore:
+        - '&7技能点: &e%skill-points%'
+        - '&7'
+        - '&7点击查看你的技能！'
+        slots: 14
+        item-flags:
+        - '*'
+        type: CLASS_SKILLS
+      aspects:
+        material: NETHER_STAR
+        name: '&d属性'
+        lore:
+        - '&7属性点: &e%aspect-points%'
+        - '&7'
+        - '&7点击查看你的属性！'
+        item-flags:
+        - '*'
+        slots: 15
+        type: CLASS_ASPECTS
+  # 技能GUI
+  skill-list:
+    title: 技能
+    size: 45
+    skill-slots: 10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,35
+    # 下一个技能等级的预览
+    upgrade-preview:
+      name: '&a[Preview] %name%'
+      lore:
+      - '%lore%'
+      - '&8&m                            '
+      - '&6&l右键花费 &f%cost% SP升级'
+    # 其他自定义物品
+    content:
+      filler1:
+        material: YELLOW_STAINED_GLASS_PANE
+        name: '&7'
+        slots: 0,1,7,8,9,17,18,26,27,35,36,37,43,44
+      filler2:
+        material: ORANGE_STAINED_GLASS_PANE
+        name: '&7'
+        slots: 2,3,5,6,38,39,40,41,42
+      reset:
+        material: MILK_BUCKET
+        name: '&f重置'
+        lore:
+        - '&7点击重置并返还&f技能点&7.'
+        item-flags:
+        - '*'
+        slots: 4
+        type: RESET
+      next:
+        material: ARROW
+        name: '&a下一页'
+        slots: 26
+        type: NEXT
+      back:
+        material: ARROW
+        name: '&a上一页'
+        slots: 18
+        type: BACK
+      return:
+        material: REDSTONE
+        name: '&c返回'
+        slots: 40
+        type: RETURN
