@@ -1,0 +1,99 @@
+# 设置世界需要的最低等级要求
+world-levels:
+  world: 1
+  world_nether: 1
+  world_the_end: 1
+
+# 世界白名单
+world-whitelist:
+  # 当设置为true时，白名单当黑名单使用
+  reverse: false
+  list:
+  - world
+  - world_nether
+  - world_the_end
+
+# 区域白名单
+region-blacklist:
+  # 当设置为true时，白名单当黑名单使用
+  reverse: false
+  list:
+  - pvp_arena
+
+# 经验设置
+exp:
+  # 当设置为false时，玩家会得到原版怪物的经验
+  use-tables: true
+  # 玩家经验boss条
+  boss-bar:
+    enabled: false
+    # 经验条的标题
+    # 占位符： %exp%, %exp-max%
+    title: '&e&lExp &6%exp%&7/&6%exp-max%'
+    # 经验条颜色
+    color: YELLOW
+    # 经验条样式
+    style: SOLID
+  # 怪物经验表格
+  sources:
+    # 以下生成方式的怪物将不会掉落RPG经验
+    # 生成方式：https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/CreatureSpawnEvent.SpawnReason.html
+    prevent-from:
+    - EGG
+    - DISPENSE_EGG
+    - SPAWNER
+    - SPAWNER_EGG
+    - SLIME_SPLIT
+    - BUILD_WITHER
+    - BUILD_SNOWMAN
+    - BUILD_IRONGOLEM
+    # 原版实体类型经验表
+    # 空列表代表所有怪物都使用默认值
+    vanilla-mobs:
+      default:
+        min: 1
+        max: 2
+        chance: 100.0
+      # PIG:
+      #   min: 3
+      #   max: 4
+      #   chance: 100.0
+    # MythicMobs经验表
+    # 空列表代表所有怪物都使用默认值
+    mythic-mobs:
+      default:
+        min: 2
+        max: 4
+        chance: 100.0
+      SkeletonKing:
+        min: 3
+        max: 5
+        chance: 100.0
+  # 经验损失设置
+  loss:
+    # 死亡经验丢失
+    on-death:
+      # 是否启用
+      enabled: true
+      # 丢失当前经验的百分比
+      percent: 2
+    # 是否允许玩家拥有负经验
+    # 当玩家达到当前等级的最大经验的负数时，玩家将会降级
+    allow-negative: true
+  # 经验平衡设置
+  balance:
+    # 当玩家杀死等级比玩家低的怪物时将会减少经验收入
+    decrease-for-low-lvl-mobs:
+      # 是否启用
+      enabled: true
+      # 等级相差多少时会减少经验收入？
+      every: 1
+      # 经验可以被减少多少次？
+      max-times: 10
+      # 减少经验的百分比
+      percent: 10
+    increase-for-high-lvl-mobs:
+      enabled: true
+      every: 1
+      max-times: 10
+      percent: 10
