@@ -673,6 +673,7 @@ GroundClean:
   # 地面清洁行动中不得移除的物品类型清单
   WhiteList:
   - itemType
+# 聊天
 Chat:
   # 将尝试修改聊天以以定义的格式显示它
   ModifyChatFormat: false
@@ -845,35 +846,36 @@ Chat:
     OnlyWhenAfk: false
     # 设置为true时，@符号将被删除
     RemoveEta: false
+# 命令
 Command:
   CommandFilter:
     Duplicate:
-      # When set to true, plugin will prevent spaming of same or similar command in short time range. Can be bypased with cmi.commandfilter.bypass permission
+      # 设置为true时，插件将防止在短时间内发送相同或相似命令的垃圾消息。 可以使用cmi.commandfilter.bypass权限进行绕过
       Use: false
-      # How much in percentage command is counted as same
+      # 多少百分比命令算作相同
       Percentage: 80
-      # Defines how often in seconds you can send same/similar commands
+      # 定义您可以多久发送一次相同/相似的命令
       Interval: 5
-      # How many commands you can repeat before stopped for cooldown
+      # 您可以在停止冷却之前重复多少个命令
       MinAmount: 2
-      # Whitelisted commands to ignore
+      # 白名单中要忽略的命令
       WhiteList:
       - msg
       - tell
       - login
       - register
   Spy:
-    # Delay in seconds for commands spy to turn on after relog
-    # This will prevent some one from loging in with admin account and seeing commands before loging in
-    # Keep it at same or higher than your login plugin delay for entering password
-    # This includes social spy too
+    # 重新登录后打开命令提示的延迟时间（以秒为单位）
+    # 这样可以防止某些人使用管理员帐户登录并在登录之前查看命令
+    # 保持等于或高于您的登录插件延迟输入密码的时间
+    # 这也包括社交提示
     DelayForTrigger: 60
-    # Commands in this list will not be shown when command spy is enabled for player for security/privacy reasons
+    # 由于安全性/隐私性原因而启用玩家命令监视时，将不会显示此列表中的命令
     BlackListed:
     - register
     - login
     - l
-    # Players without cmi.security.admin will only see commands from this list with command spy feature
+    # 没有cmi.security.admin的玩家将仅从具有命令提示功能的列表中看到命令
     CommandList:
     - cmi spawn
     - cmi tp
@@ -881,59 +883,65 @@ Command:
     - cmi heal
     - cmi feed
     - cmi fly
+# 玩家提示
 PlayerNotes:
-  # For how long to keep players notes in days
+  # 在几天内保持玩家记录的时间
   ExpiresIn: 30
+# 玩家邮件
 PlayerMail:
-  # For how long to keep players mail in days
+  # 玩家的邮件保留多少天
   ExpiresIn: 30
-  # Mailing to all players will send mails to players who loged into server in last x days
+  # 向所有玩家发送邮件的时候会包括多少天之内登录的玩家
   mailAllDays: 7
+# 显示名称
 DisplayName:
-  # If you have 3rd party plugin changing players display name, set this to false
+  # 如果您有第3方插件更改玩家的显示名称，请将其设置为false
   Change: true
-  # Format of players display name. By default only nick name will be visible, if its set, if not, then players name
-  # Possible custom varibales: {prefix} {suffix} {nicknameprefix}
-  # Supports placeholders
+  # 玩家显示名称的格式。默认情况下，只有昵称是可见的，如果设置，则不显示玩家名称
+  # 可能的自定义变量：{prefix} {suffix} {nicknameprefix}
+  # 支持占位符
   Format: '{nickName}'
-  # Defines regex for valid nick name
-  # By default only letters and numbers are allowed
+  # 为有效的昵称定义正则表达式
+  # 默认情况下，只允许使用字母和数字
   ValidNicknameRegex: '[^\p{L}0-9\-\_]'
+# 昵称
 NickName:
-  # Prevents players to change their nick name to one of defined without permission
-  # Use lower case
+  # 防止玩家未经允许将其昵称更改为已定义的昵称之一
+  # 使用小写
   # cmi.command.nick.bypassblacklist
-  # to bypass protection against already in use name/nickname use cmi.command.nick.bypassinuse
+  # 绕过针对已在使用的名称/昵称的保护，请使用cmi.command.nick.bypassinuse
   BlackList:
   - admin
   - administrator
   - server
   - staff
   - staf
-  # Min length of nick name, can be bypassed with cmi.command.nick.bypass.length
+  # 昵称的最小长度，可以使用cmi.command.nick.bypass.length绕过
   MinLength: 4
-  # Max length of nick name, can be bypassed with cmi.command.nick.bypass.length
+  # 昵称的最大长度，可以使用cmi.command.nick.bypass.length绕过
   MaxLength: 16
-  # Adds prefix for players nickname to indicate that its not real name. This can be added to display name with {nicknameprefix}
+  # 为玩家昵称添加前缀，以指示其不是真实姓名。 可以使用{nicknameprefix}添加显示名称
   Prefix: '~'
-  # When true, will only add nickname prefix when its not same as original name. This can allow colorization or capitalization change without addign prefix
-  PrefixWhenDifferent: false
-  # When true, online players nick name will be included into tabcomplete
+  # 如果为true，则仅在别名与原始名称不同时才添加别名。 这样可以在没有附加前缀的情况下更改颜色或大小写
+  PrefixWhenDifferent: true
+  # 设置为true时，在线玩家昵称将包含在tabcomplete中
   IncludeInTabComplete: true
+# 染料
 Dye:
-  # When set to true colored lether armor will be bound to the player who receives that coloration and will not work on others if he would give it to them
-  # Only applies for dynamic armor colors like biome, health and so on
+  # 彩色皮革装甲将绑定到接受该着色的玩家，并且如果他愿意将其应用于其他人，则将不起作用
+  # 仅适用于动态生物盔甲颜色，例如生物群系，健康状况等
   BoundToPlayer: false
-# Shows if there is an available new version on login with cmi.versioncheck permission node
+# 显示使用cmi.versioncheck权限节点登录时是否有可用的新版本
 ShowNewVersion: true
+# 刷怪笼
 Spawners:
-  # 如果遇到生成器处理问题，请将其设置为true以避免从CMI端进行任何生成器操作
-  # 这将禁用诸如生成器放置，生成器掉落，生成器收费等功能。
+  # 如果遇到刷怪笼处理问题，请将其设置为true以避免从CMI端进行任何生成器操作
+  # 这将禁用诸如刷怪笼放置，刷怪笼掉落，刷怪笼收费等功能。
   FullDisable: false
   Break:
-    # 为生成器中断启用或禁用生成器处理程序
-    # 如果启用，则如果使用Silktouch镐并且具有cmi.dropspawner权限节点，则玩家将生成spawner
-    # 如果玩家具有cmi.dropspawner.nosilk权限节点，则不需要玩家使用丝质镐来丢弃生成者
+    # 为刷怪笼中断启用或禁用刷怪笼处理程序
+    # 如果启用，则如果使用Silktouch镐并且具有cmi.dropspawner权限节点，则玩家将生成刷怪笼
+    # 如果玩家具有cmi.dropspawner.nosilk权限节点，则不需要玩家使用丝质镐来挖掉刷怪笼
     Enabled: false
     # 如果设置为true，则播放器将需要具有特定的权限节点才能断开并获取特定的生成器。
     # 例如：玩家应该具有cmi.dropspawner.pig来破坏猪的生成器并使其掉落，或者具有cmi.dropspawner.zombie来获取僵尸的生成器
