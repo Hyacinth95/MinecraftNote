@@ -314,35 +314,35 @@ PlaytimeRewards:
 Sleeping:
   Speedup:
     # 设置为true时，玩家可以通过睡在床上来加速夜晚
-    # 这将使夜晚的百分比提高，具体取决于该世界上有多少玩家在床上睡觉
+    # 这将使夜晚的流速百分比提高，具体取决于该世界上有多少玩家在床上睡觉
     Enabled: true
-    # Type of speedup information, can be: none, title, bossbar
+    # 加速信息的类型，可以是：none, title, bossbar
     InfoType: title
-    # When set to true, players who are in afk mode will be excluded from speed calculations
+    # 设置为true时，处于afk模式的玩家将从速度计算中排除
     ExcludeAfk: true
-    # Defines speed to go throw night, bigger numbers will make it go faster and less players you will need to go throw night
-    # 100 will result in 100 times faster time
+    # 定义夜晚时间的流速，数值越大则晚上时间越快，而需要更少的玩家来加速
+    # 100将使速度加快100倍
     BaseSpeed: 100
-    # Defines minimal speed to go throw night, this is in case there are more players than base speed and calculation return default speed
+    # 定义夜晚时间的最低速度，以防玩家人数过多加速时间回到默认速度
     MinSpeed: 5
-    # Minimal amount of players sleeping in beds before speeding it up
-    # Can be defined in 2 formats. When using clean number like 3, then 3 players will have to be sleeping before speedup kicks in
-    # If amount is defined with % like 50% then half of server population will have to be sleeping before speedup kicks in
+    # 加速之前在床上睡觉的最少玩家数量
+    # 可以两种格式定义。 使用3之类的整数时，必须有3个玩家在加速前入睡
+    # 如果将数量定义为%（例如50%），则必须有一半的服务器人口处于睡眠状态，然后才能加速
     MinBeforeSpeeding: 50%
-    # When set to true online players will be informed about missing sleeping people count
+    # 设置为true时，在线玩家将被告知不睡觉人数的统计
     Inform: true
-    # Time in seconds between information messages can be shown when player starts or stops sleeping
+    # 当播放器开始或停止睡眠时，可以显示信息消息之间的时间（以秒为单位）
     InformDelay: 30
 # 指南针
 Compass:
-  # Enable EXPERIMENTAL boss bar compass
-  # Only for 1.9+ servers
-  BossBar: false
-  # Requires to hold compass in had to see it
+  # 启用EXPERIMENTAL Boss条指南针
+  # 仅适用于1.9+服务器
+  BossBar: true
+  # 需要拿着指南针才能看到它
   RequireCompass: false
-  # Compass update interval in milliseconds
+  # 指南针更新间隔（以毫秒为单位）
   UpdateInterval: 200
-  # Keep same spacing between each direction. Length can be any you want
+  # 每个方向之间保持相同的间距。 长度可以是您想要的任何长度
   Shape: '------------SW-------------W-------------NW-------------N-------------NE-------------E-------------SE-------------S-'
   Color: '&7'
   ShowHome: true
@@ -356,96 +356,99 @@ Compass:
 # 漏洞补丁
 ExploitPatcher:
   PreventItemPickup: true
-  # When enabled this will prevent exp bootles being destroyed on portal edge and duplicating them in result of that
+  # 启用后，这将防止在门户网站边缘破坏exp bootles并因此而复制它们
   PreventExpPortals: true
-  # When enabled this will prevent players from performing commands which could lead to some bugs
-  # By default its disabled to keep vanilla behavior, but is recommended to enable it to avoid issues
+  # 启用后，这将阻止玩家执行可能导致某些错误的命令
+  # 默认情况下，禁用此选项可保持正常行为，但建议启用它以避免出现问题
   NoCommandsInBed: false
   AttachedCommands:
-    # When set to true attached commands to items will be encrypted and this will limit item usage only for that server.
-    # RECOMMENDED to keep it at true
+    # 设置为true时，将加密物品的附加命令，这将仅限制该服务器的物品使用。
+    # 建议保持true
     Encrypt: true
-    # When set to true, attached commands on items which are not encrypted yet will be converted on first use
-    # This can be set to false if you are sure there is no need to convert any old items
-    # Keep in mind that setting allowNonEncrypted to false, will disable this by default
+    # 设置为true时，尚未加密的物品上附加的命令将在首次使用时进行转换
+    # 如果您确定不需要转换任何旧物品，则可以将其设置为false
+    # 请记住，将allowNonEncrypted设置为false，默认情况下将禁用它
     oldItemConversion: false
-    # When set to true, attached commands which never been encrypted will be accepted as usual. This is recommended to use only when you have possibility to have nonecrypted item commands
-    # In case you have fresh server, set this to false and enable encryption above
-    # Keep in mind that setting this to false, will enable encryption by default
+    # 设置为true时，将照常接受从未加密的附加命令。 建议仅在可能使用非加密物品命令时使用
+    # 如果您有新服务器，请将其设置为false并在上面启用加密
+    # 请记住，将其设置为false将默认启用加密
     allowNonEncrypted: false
 Vault:
-  # If your having issues with vault grabbing correct players' group or balance, consider to turn this to false
+  # 如果您在vault关于玩家组或余额的使用中遇到问题，无法获取正确的玩家分组或平衡，请考虑将其设置为false
   Money: true
   Group: true
+# 价值
 Worth:
-  # Defines lore that will prevent an item from being sold using /cmi sell.
-  # Color codes and capitalization are being ignored
+  # 定义将阻止使用/cmi sell出售商品的Lore。
+  # 颜色代码和大小写被忽略
   BadLore:
   - Creative item by Gasha
+# boss条
 BossBar:
-  # Enables or disbales bossbar hp bar on 1.9+ servers
-  # Only players with cmi.bossbar.hpbar permission node can see it
-  # Permission node is been rechecked no more often than every minute for efficiency
+  # 在1.9+服务器上启用或禁用bossbar hp bar
+  # 只有具有cmi.bossbar.hpbar权限节点的玩家才能看到它
+  # 重新检查权限节点的频率不超过每分钟一次，以提高效率
   HpBarEnabled: true
-  # List of mob types which will be excluded from hp boss bar
+  # HP老板栏中将不包含的怪物类型列表
   HpBarBlackList:
   - Ender_dragon
 Ban:
-  # When set to true players who are banned will get messages modified by CMI instead of seeing vanilla type of message
+  # 设置为true时，被ban的玩家将获得CMI修改的消息，而不是看到普通的消息类型
   OverrideLoginMessage: false
+# home
 Homes:
-  # Open gui when using /cmi home command if you have more then one home in your saved list
+  # 如果在保存的列表中有一个以上的家时，则在使用/cmi home命令时打开gui
   Gui: true
-  # Homes groups to define max amount homes player can have. Permission: cmi.command.sethome.[groupname]
-  # If players home group if not find then amount will be set to 1
-  # To have unlimited homes use cmi.command.sethome.unlimited permission
-  # In addition to this you can use simple numeric permission node cmi.command.sethome.[number] which will define max number of homes player can have
+  # homes组定义玩家可以拥有的最大房屋数量。 权限：cmi.command.sethome.[groupname]
+  # 如果找不到玩家的homes组，则数量将设置为1
+  # 要拥有无限的家，请使用cmi.command.sethome.unlimited权限
+  # 除此之外，您还可以使用简单的数字权限节点cmi.command.sethome.[number]来定义玩家可以拥有的最大房屋数量
   Groups:
     Newbie: 2
     Advanced: 3
     Vip: 5
-  # Requires cmi.bedhome permission node
-  # When set to true by interacting with bed, regular home location will be created
-  # When set to false vanilla bed home location will be set
+  # 需要cmi.bedhome权限节点
+  # 通过与床互动设置为true时，将创建普通的home
+  # 设置为false时，将创建一个bed home
   BedInteraction: true
-  # When set to true, you can only set home location when you shift click a bed
+  # 设置为true时，仅当您shift+单击床时才能设置家位置
   onlyShiftBed: false
-  # Removes bed location when home location was created by clicking on that bed
+  # 如果床被破坏，将删除bed home
   RemoveBedLocationOnBedBreak: true
-  # When enabled, plugin will check if player can break block in that area before creating new home location
-  # This allows to prevent setting homes in protected areas
-  # Can be bypassed with cmi.command.sethome.bypass
+  # 启用后，在玩家创建一个家前插件会检查玩家是否在该区域可以破坏方块
+  # 这个设置可以防止玩家在受保护的区域设置家
+  # 可以通过cmi.command.sethome.bypass绕过此检查
   CheckBlockBreak: false
-  # Name for default home location. By default its "Home"
-  DefaultName: Home
-  # Name for bed location. By default its "Home"
-  # Different name can be used to identify home location set by interacting with a bed from home location created with command
-  DefaultBedName: Home
-  # Defines what characters you can use in your home names
+  # 默认家的名称，默认为“Home”
+  DefaultName: 家
+  # bed home的名称，默认为“Home”
+  # 通过使用命令创建的家位置中的床与床进行交互，可以使用不同的名称来标识家庭位置集
+  DefaultBedName: 床
+  # 定义可以在家名称中使用的字符
   ValidNameRegex: '[^a-zA-Z0-9\-\_]'
 # 重生
 ReSpawn:
-  # Time in seconds to make player immortal after he respawns
-  # Can be used to prevent respawn camping
-  # Set to 0 if you want to disable it
+  # 重生后使玩家受保护的时间（以秒为单位）
+  # 可以防止respawn camping
+  # 如果要禁用，则设置为0
   Immortality: 3
-  # If you want 3rd party plugin to handle player respawning, simply set this to false and reload plugin
+  # 如果您想让第三方插件处理玩家重生，只需将其设置为false并重新加载插件
   Enabled: true
   Global:
-    # Defines respawn order if defined world is not present in Specific list
-    # Possible respawn locations: spawn, bedLocation, homeLocation, worldSpawn, warp![warpName]
-    # Spawn is preset spawnlocation with /cmi setspawn command, that location should have RespawnLocation set to true
-    # bedLocation is location set by interacting with bed, BedInteraction should be set to false and players requires cmi.bedhome to set bed location
-    # homeLocation is location set by player which is with default (Home) name, if that one doesnt exist then first in the list will be used if possible
-    # worldSpawn is location preset to this world, this is not CMI location but default world spawn location
-    # warp![warpName] can be any valid warp you set for players to be teleported, they will bypass any requirements for that warp
+    # 如果在“特定”列表中不存在定义的世界，则定义出生点顺序
+    # 可能的重生位置：spawn, bedLocation, homeLocation, worldSpawn, warp![warpName]
+    # Spawn是使用/cmi setspawn命令预设的出生点位置，该位置应将RespawnLocation设置为true
+    # bedLocation是通过与床互动设置的位置，BedInteraction应设置为false，玩家需要cmi.bedhome设置床位置
+    # homeLocation是由玩家设置的位置，该位置具有默认的（家）名称，如果该名称不存在，则将使用列表中的第一名
+    # worldSpawn是此世界的预设位置，这不是CMI位置，而是默认的世界生成位置
+    # warp![warpName]可以是您为要传送的玩家设置的任何有效地标，它们将绕过该地标的任何要求
     PriorityOrder:
     - spawn
     - bedLocation
     - homeLocation
     - worldSpawn
-  # Defines respawn order for defines worlds
-  # Remove world if you want to leave respawn handling for server or 3rd party plugin
+  # 为定义的世界定义重生顺序
+  # 如果要保留服务器或第三方插件的重生处理，请删除世界
   Specific:
     world:
     - spawn
@@ -472,124 +475,125 @@ ReSpawn:
     - bedLocation
     - homeLocation
     - worldSpawn
+# afk
 Afk:
-  # Enable or disable auto afk system entirely
+  # 完全启用或禁用自动afk系统
   Enabled: false
-  # Prevents jumping in one place to avoid afk status
+  # 防止在同一个地方跳以避免afk状态
   PreventJumping: true
-  # Prevents damage while afk
-  PreventDamage: true
-  # Defines how often in seconds plugin will check for afk players state
+  # afk时不受到伤害
+  PreventDamage: false
+  # 定义插件以秒为单位检查afk玩家状态的频率
   CheckInterval: 10
-  # When set to true, players playtime counter stops
-  # As of nature how this system works you can see +-1second jumping up and down while checking players playtime
+  # 设置为true时，玩家在线时间计数器将停止
+  # 从本质上讲，该系统的工作原理是，您可以在查看玩家在线时间时看到+-1秒在上下跳动
   StopPlayTime: false
-  # Defines how long to wait after player stops moving to set him as afk
-  # Player needs to have cmi.command.afk.auto permission node
+  # 定义玩家停止移动以将其设置为afk后需要等待的时间
+  # 玩家需要具有cmi.command.afk.auto权限节点
   AutoAfkIn: 300
-  # Defines commands to be performed when player enters afk mode automatically while addling
-  # Supports specialized commands
+  # 定义玩家自动进入afk模式时系统自动执行的命令
+  # 支持专用命令
   AutoAfkCmds:
-  - cmi broadcast !&6[playerDisplayName] &eis now AFK
-  # Defines commands to be performed when player enters /cmi afk
-  # Supports specialized commands
+  - cmi broadcast !&6[playerDisplayName] &e暂时离开了
+  # 定义当玩家输入/cmi afk时要执行的命令
+  # 支持专用命令
   ManualAfkCmds:
-  - cmi broadcast !&6[playerDisplayName] &eis now AFK
-  # Defines commands to be performed when player leaves afk mode
+  - cmi broadcast !&6[playerDisplayName] &e暂时离开了
+  # 定义玩家退出afk模式时要执行的命令
   AfkLeaveCmds:
-  - cmi broadcast !&6[playerDisplayName] &eis no longer AFK
-  # Defines how long to wait after player stops moving to kick player
-  # This can be used not only to kick but to perform repeating action every x seconds if needed
-  # Keep it at -1 to disable auto kick
-  # Can be bypassed with cmi.command.afk.kickbypass permission node
+  - cmi broadcast !&6[playerDisplayName] &e回来了
+  # 定义玩家停止移动以踢出玩家后要等待的时间
+  # 这不仅可以用来踢出玩家，还可以根据需要在每x秒执行一次重复的操作
+  # 保持为-1以禁用自动踢出
+  # 可以使用cmi.command.afk.kickbypass权限节点绕过
   AutoKickIn: -1
-  # This will define how long to wait before performing kick commands again
+  # 这将定义再次执行kick命令之前要等待的时间
   RepeatingAutoKickInterval: 300
-  # When set to true, kick command will be repeated each RepeatingAutoKickInterval seconds
+  # 设置为true时，将在每RepeatingAutoKickInterval秒内重复执行一次kick命令
   RepeatKickCommand: false
-  # Defines commands to be performed when player can be kicked
-  # If player is not kicked then commands will be repeated every RepeatingAutoKickInterval seconds
+  # 定义可以踢出播放器时要执行的命令
+  # 如果玩家没有被踢，则命令将在每RepeatingAutoKickInterval秒内重复一次
   AutoKickCmds:
-  - cmi kick [playerName] &eYou have been kicked for idling more than [time]
-  # Defines worlds where players will not be placed into afk mode after they idled for defined time
+  - cmi kick [playerName] &e你[time]没动静了，已经被踢出服务器
+  # 定义不会进入afk模式的世界
   DisabledWorlds:
   - oneTestWorld
   - secondTestWorld
-  # Disables afk on interaction
+  # 在互动时禁用afk功能
   DisableOnInteract: true
-  # Prevents player from going bypassing afk mode while continuously holding one button with particular items or on particular blocks
+  # 防止玩家连续按住一个带有特定物品或特定方块的按钮时绕过afk模式
   SmartInteractCheck: true
-  # Prevents from players abusing afk by constantly moving in afk machine
+  # 通过不断在afk机器中移动来防止玩家滥用afk
   AntiAfkMachines: true
-  # Disables afk on inventory click
+  # 在背包点击后取消afk
   DisableOnInventoryClick: true
-  # Disables afk on item drop
+  # 丢物品时取消afk
   DisableOnitemDrop: true
-  # Disables afk on command usage
+  # 使用命令时取消afk
   DisableOnCommand: true
-  # Disables afk on public chat message
+  # 公屏聊天时取消afk
   DisableOnPublicChat: true
-  # Disables afk on private chat message
+  # 私人聊天时取消afk
   DisableOnPrivateChat: true
-  # Disables afk on move
+  # 移动时取消afk
   DisableOnMove: true
-  # Disables item pickup while afk
+  # afk时禁止拾取物品
   DisableItemPickup: false
   PreventMobSpawning:
-    # When enabled we can prevent mob spawning near players who are afk
+    # 启用后可以防止怪物生成在afk玩家附近
     Enabled: false
-    # Prevents natural mob spawning
-    # This can be more on heavy side of the server as it will try constantly to spawn in monsters near afk players
+    # 防止自然生成的怪物
+    # 这可能会加重服务器负担，因为它将不断尝试在afk玩家附近生成怪物
     Natural: false
-    # Prevent mob spawning from spawners
+    # 防止刷怪笼生成怪物
     Spawners: true
-    # Usually responsible for spawning in iron golems
+    # 村庄防御：这通常指生成铁傀儡
     VillageDefence: true
-  # Disables exp pickup while afk
-  # Attention! Because of weird minecraft handling of exp orbs, best way is to set orb to 0exp and allow it to be obsorbed
-  # So by enabling this exp obsorbed by afk players will have no effect
+  # afk时禁止拾取经验
+  # 注意！由于Minecraft在经验球上的怪异处理，最好的方法是将经验球设置为0exp并允许玩家拾取
+  # 因此，通过这种方法被玩家拾取经验，将不会有任何影响
   DisableExpPickup: false
 Holograms:
-  # Defines in milliseconds how often to check if player entered holograms trigger area
-  # Bigger numbers can help slightly lower server load
-  # This is not essential to keep in low numbers
+  # 定义检查玩家是否进入全息图触发区域的时间间隔（毫秒）
+  # 更大的数字可以帮助稍微降低服务器负载
+  # 这对于保持低数量的全息图不是必需的
   CheckInterval: 2000
   Defaults:
-    # Default value for hologram view range
-    # This defines from how far holograms will appear for the player or when they will disapear
+    # 全息图查看范围的默认值
+    # 这定义了从全息图向玩家显示的距离或消失的时间
     viewRange: 16
-    # Defines default update interval
-    # Bigger this number is better performance we will have
+    # 定义默认更新间隔
+    # 这个数字越大，我们将拥有更好的性能
     updateRange: 8
     updateInterval: 0.0
-    # Defines default page change interval
-    # When value is set to 0 or lower, pages will not be changed
+    # 定义默认页面更改间隔
+    # 当值设置为0或更低时，页面将不会更改
     pageChangeInterval: 0.0
-    # Posible values: down, up
-    # Defines if we should place lines up from starting position or down
+    # 可能的值： down, up
+    # 定义是否应将线条从起始位置向上放置或向下放置
     placeUp: true
 # 表决器
 Votifier:
-  # When set to true votifier votes will be counted for player
+  # 设置为true时投票者票数将计入玩家人数
   CountVotes: true
-  # Number of votes one IP can make in last 24 hours
-  # Set it to 0 to have unlimited amount
+  # 一个IP可以在过去24小时内获得的投票数
+  # 设置为0即可无限量使用
   MaxVotesInADay: 0
-  # Cooldown between votes from same service
-  # In most cases voting service will have its own cooldown setup
-  # But if you need extra one to prevent rapid voting you can define time in seconds over here
+  # 来自同一服务的选票之间的冷却时间
+  # 在大多数情况下，投票服务将具有自己的冷却时间设置
+  # 但是，如果您需要其他人来阻止快速投票，则可以在此处以秒为单位定义时间
   GeneralCooldown: 0
-  # When set to false, commands on sucessfull vote will not be performed
+  # 设置为false时，将不会执行成功投票的命令
   PerformCommands: true
-  # Defines commands to be performed when player votes
-  # Supports specialized commands and placeholders
-  # [serviceName] variable can be used to insert address
+  # 定义玩家投票时要执行的命令
+  # 支持专用命令和占位符
+  # [serviceName]变量可用于插入地址
   CommandsOnVote:
   - cmi broadcast !&6[playerDisplayName] &evoted!
   - cmi give [playerName] diamond
-  # Keep it at false if you dont want to give out extra rewards
+  # 如果您不想给予额外的奖励，请保持false
   ExtraRewardsEnabled: false
-  # Commands will be performed when player collect determined amount of votes
+  # 当玩家收集确定数量的选票时将执行命令
   ExtraRewards:
     '10':
     - cmi heal [playerName]
@@ -598,194 +602,194 @@ Votifier:
     - cmi heal [playerName]
     - cmi money give [playerName] 1000
     - cmi give [playerName] diamond 32
-  # List of players to be excluded from top voter list
+  # 从最高投票者名单中排除的玩家名单
   ExcludeList:
   - None
 # 等级
 Ranks:
   AutoRankUp:
-    # Defines how often in seconds plugin will check for possible player rankups
-    # Set it to 0 or less to disable auto rankup checks
+    # 定义插件多长时间检查一次可能的玩家排名
+    # 将其设置为0或以下以禁用自动排名检查
     Delay: 60
-    # EXPERIMENTAL. When set to true, player rankup checks will be done in async mode
-    # In case of errors related to this feature being turned on, turn it off and report issue with error log to github
+    # 实验性的。 设置为true时，玩家排名检查将在异步模式下进行
+    # 如果发现与此功能相关的错误，请将其关闭并将错误日志报告给github
     Async: false
-    # Defines how often in seconds each separate player will be checked for rankup
-    # This is different than general check just to avoid couple players ranking up at same time
-    # This also defines how often player will be notified about possible rankup and it will proportionaly increase with each time player get notification to avoid annoying spam in chat
-    # Keep it longer or same as general delay time
+    # 定义每秒钟检查每个单独的玩家进行排名的频率
+    # 这与常规检查不同，只是为了避免多个玩家同时升级
+    # 这也定义了多久会通知玩家一次有关可能的排名的信息，并且每增加一次玩家就会收到通知，从而避免烦人的垃圾邮件
+    # 保持更长的时间或与一般延迟时间相同
     PlayerDelay: 120
-    # Enable or disable progression bar in rank info window
+    # 在等级信息窗口中启用或禁用进度栏
     progressBar: true
-  # When set to true, command /cmi ranklist will output ranks from your rankup path which will exclude any rank from different paths or different rankup trees all together
-  # When set to false, all set ranks will be shown in the list
+  # 设置为true时，命令/cmi ranklist将从您的等级路径输出等级，这将排除来自不同路径或不同等级树的所有等级
+  # 设置为false时，所有设置的等级将显示在列表中
   ListSamePathOnly: false
   EffectUp: GColumn
-  # When set to true requirements which involve time will be shown in short format like '50 hours' instead of '2 days 2 hours'
+  # 当设置为真正的涉及时间的要求时，将以短格式显示，例如“ 50 hour”，而不是“ 2days2hours”
   OnlyHours: false
-  # When OnlyHours set to true you can add minutes to the output message instead of showing fractions. So you can have '5 hours 30 minutes' instead of 5.5hours'
+  # 当OnlyHours设置为true时，您可以在输出消息中添加分钟，而不是显示分数。因此，您可以拥有“5hours30minutes”而不是5.5hours”
   includeMinutes: true
 # 牌子
 Signs:
-  # Defines in milliseconds how often to check if player entered Dynamic Sign trigger area
-  # Bigger numbers can help slightly lower server load
-  # This is not essential to keep in low numbers
+  # 检查玩家是否进入动态牌子触发区域的频率(毫秒)
+  # 更大的数字可以帮助稍微降低服务器负载
+  # 这对于保持低数量动态牌子不是必需的
   CheckInterval: 5000
-  # List of colors to be translated from one to another to avoid unreadable text
-  # Only applies for Dynamic Signs feature
+  # 可以将一种颜色转换为另一种颜色以避免出现不可读的文本的列表
+  # 仅适用于动态标志功能
   TranslateColors:
   - '&6-&f'
   - '&e-&f'
   - '&7-&f'
 # 皮肤
 Skins:
-  # Enable or disable skin management
+  # 启用或禁用皮肤管理
   Enabled: true
-  # Applies skin to player automatically on his login to server if he doesnt have one already set
-  # This will always set to skin by target player name
+  # 如果尚未设置皮肤，则在登录服务器时自动将皮肤应用于玩家
+  # 这将始终根据目标玩家名称设置为皮肤
   AutoApply: false
-  # Sets player sking to Steve when turning skin off and lets server to handle it
-  # If its false, then skin will be changed to online one
+  # 在关闭皮肤时将玩家皮肤设置为史蒂夫，并让服务器处理
+  # 如果其为false，那么皮肤将被更改为在线中的一个
   SteveOnOff: true
-  # Requests from player specific permission for that skin cmi.command.skin.perm.[skinName]
+  # 来自玩家的特定请求，请求该皮肤cmi.command.skin.perm.[skinName]
   RequireSpecificPerm: false
-  # Defines time in minutes how offten we want to update skin information from online Mojang servers
-  # Keep in mind that your server can only send 1 request every minute, so keep it at a decent amount, hour or more
-  # So if you have this set to 1 hour, then player skin information will be updated if player old skin information is older then 1 hour
-  # This only triggers when player joins server or changes skin manually
+  # 以分钟为单位定义时间，我们要从在线Mojang服务器更新皮肤信息的频率
+  # 请记住，您的服务器每分钟只能发送1个请求，因此请保持一定数量，一小时或更长时间
+  # 因此，如果您将此设置为1小时，则如果玩家的旧皮肤信息早于1小时，则玩家的皮肤信息将被更新。
+  # 仅在玩家加入服务器或手动更改皮肤时触发
   SkinUpdateTimer: 1320
-  # Defines time in minutes how offten we want to send requests to Mojang servers
-  # This is to limit amount of requests in specific time to avoid cluter with posible requests
+  # 以分钟为单位定义时间，我们希望将请求发送到Mojang服务器的频率
+  # 这是为了限制特定时间的请求数量，以避免集群与可能的请求
   SkinRequestFrequency: 10
 # 警告
 Alert:
-  # Time in minutes for how long we want to keep set allert on player when performing /cmi alert command. Default is 24 hours
+  # 以分钟为单位的时间，我们要在执行/cmi alert命令时在玩家上保持设置警报的时间。 默认为24小时
   Timer: 1440
 Notes:
-  # When enebled, when player logs in who has alert set on him, staff member will get notification that this player have some notes attached to him
+  # 启用后，当玩家登录设置了警报的人时，工作人员将收到通知，通知该玩家附有一些笔记
   ShowOnAlertEvent: true
 # 地面清洁
 GroundClean:
-  # List of item types not to be removed on ground clean action
+  # 地面清洁行动中不得移除的物品类型清单
   WhiteList:
   - itemType
 Chat:
-  # Will try to modify chat to display it in defined format
+  # 将尝试修改聊天以以定义的格式显示它
   ModifyChatFormat: false
-  # When set to true, regular and private messages (excludes clean messages) will have additional information when hovering over it (PlaceHolderAPI supported) and can be clicked for quick reply option
-  # To change default hover over messages seen on sent message, go to your locale file to Chat section
+  # 设置为true时，常规消息和私人消息（不包括干净消息）将鼠标悬停在常规消息和私人消息上（支持PlaceHolderAPI）将具有其他信息，并且可以单击该消息以获得快速回复选项
+  # 要更改在已发送消息上看到的消息上的默认悬停，请转到您的本地文件以进入“聊天”部分
   ClickHoverMessages: false
   DiscordSRV:
-    # Enables support for DiscordSRV plugin
+    # 启用对DiscordSRV插件的支持
     Enabled: true
-    # Indicator which can be used as {discord} in chat format to indicate that message came from discord and not ingame
+    # 可以在聊天格式中用作{discord}的指示器，以指示消息来自Discord而不是游戏中
     Label: '&2[&7D&2]'
     UnlinkedLabel: '&4[&cD&4]'
-  # Enables support for DynMap web chat
+  # 启用对DynMap网络聊天的支持
   DynMapChat: true
-  # When set to false, each time you will use /r you will reply to person you previously sent message directly or to person who sent you message if there is none you have conversion before
-  # When this set to true, players with /r will reply to person who last sent private message. This can result in confusion when using /r while getting private messages from multiple players
+  # 设置为false时，每次使用/r时，你都会回复上一次回复过的人，如果没有人被你回复过则回复上一次回复你的人
+  # 如果将此设置为true，则带有/r的玩家将回复上次发送私人消息的人。在从多个玩家获取私人消息时使用/r时，这可能导致混乱
   ReplyToLastMessenger: false
-  # If ReplyToLastMessenger is set to false, then timeOut will be taken into consideration to who you should reply
-  # If you had conversation in last 120 seconds (default) then even receiving message from 3rd person, you will still reply to original player
-  # If you had conversation in longer then 120 seconds period, then you will reply to latest person who send you a message
+  # 如果ReplyToLastMessenger设置为false，那么将考虑timeOut来回答谁
+  # 如果您在最近120秒内进行了对话（默认），那么即使收到第三人的消息，您仍然会回复原始玩家
+  # 如果您的对话时间超过了120秒，那么您将回复向您发送消息的最新人员
   LastMessengerTimeOut: 120
-  # When set to true players will need to have cmi.command.msg.[groupname].send where [groupName] is receivers main permission group
+  # 设置为true时，玩家将需要具有cmi.command.msg.[groupname].send，其中[groupName]是接收者的主要权限组
   PrivateMessagesGroups: false
-  # When set to false, web pge links in a chat will not get shortened to default [LINK] format
+  # 设置为false时，聊天中的网页链接不会缩短为默认的[LINK]格式
   TranslateLink: true
-  # Defines regex when replacing url in chat with short word
-  # Examples:
+  # 用短字替换聊天中的url时定义正则表达式
+  # 例子:
   # (https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})
   # ((http|https|ftp|ftps)\:\/\/)?[a-zA-Z0-9\-]+\.[a-zA-Z]{2,3}(\/\S*)?
   # ((http|https|ftp|ftps)\:\/\/)?[a-zA-Z0-9\-]+\.[a-zA-Z]{2,3}(\/\S*)?([^\s]+)
   LinkRegex: ((http|https|ftp|ftps)\:\/\/)?[a-zA-Z0-9\-]+\.[a-zA-Z]{2,3}(\/\S*)?([^\s|^\)]+)
-  # When set to true, particular variables in chat will be translated into items player are holding. List of variables belove
+  # 设置为true时，聊天中的特定变量将转换为玩家持有的物品。 belove变量列表
   HoverItems: true
-  # Defines regex when replacing item line in chat with players item in hand information. Only works when CMI hover over chat format is enabled
+  # 当用玩家手中的物品信息替换聊天中的物品行时，定义正则表达式。仅在启用CMI悬停聊天格式时有效
   ItemRegex:
   - (\%item\%)
   - (\[item\])
   - (\%i\%)
-  # Attention! This will require you to have CMI Bungee plugin which can be found at zrips.net
-  # Or direct download https://www.zrips.net/cmi/
-  # Do you want to enable private messaging over bungeecord
+  # 注意！ 这将需要您具有CMI Bungee插件，该插件可在zrips.net上找到。
+  # 或直接下载https://www.zrips.net/cmi/
+  # 是否要通过Bungeecord启用私人消息传递
   BungeeMessages: true
-  # Do you want to enable public messaging over bungeecord
+  # 您是否要通过Bungeecord启用公共消息传递
   BungeePublicMessages: true
-  # Do you want to enable staff messaging over bungeecord
+  # 是否要启用员工通过Bungeecord进行消息传递
   BungeeStaffMessages: true
-  # Used for simple chat messages. Optional variables: {world} {prefix} {suffix} {group}. Supporting PlaceHolderAPI variables like %player_server%
-  GeneralFormat: '{prefix}&f{displayName}&7: &r{message}'
-  # Defines range of regular messages to travel
-  # Set to -1 to disable range restriction
+  # 用于简单的聊天消息。 可选变量：{world} {prefix} {suffix} {group}。 支持PlaceHolderAPI变量，例如%player_server%
+  GeneralFormat: '[%multiverse_world_alias%&r]%playerTitle_use%&f{displayName}&7 >> &r{message}'
+  # 定义要发送的常规消息的范围
+  # 设置为-1以禁用范围限制
   GeneralRange: -1
-  # Defines range of shout messages to travel
-  # Shout messages should start with ! and player should have cmi.chat.shout permission
-  # GeneralRange should be enabled
-  # set to 0 to shout across all worlds, -1 to disable
-  ShoutRange: 200
-  # Defines cost for each shout message
-  ShoutCost: 0
-  # Prefix used to idicate that message should be sent to public chat instead of current players chat room
-  # Set it to empty field if you want this feature to be disabled
+  # 定义要传播的喊话范围
+  # 喊话消息应以!开头。并且播放器应具有cmi.chat.shout权限
+  # GeneralRange应该启用
+  # 设置为0以在所有世界中大喊，设置为-1以禁用
+  ShoutRange: 0
+  # 定义每条喊话的费用
+  ShoutCost: 10
+  # 用来表明消息应该发送到公共聊天室而不是当前玩家聊天室的前缀
+  # 如果要禁用此功能，请将其设置为空字段
   ChatRoomShout: '!'
-  # Use numeric increments to separate groups from each other. If player has more than one, then line with higher number will be used
-  # Add as many lines as you need too
-  # cmi.chatgroup.[id] permnission node to use
-  # Permission example: cmi.chatgroup.2
+  # 使用数字增量将组彼此分开。 如果玩家有多个，则将使用编号更大的行
+  # 根据需要添加任意多的行
+  # 要使用的cmi.chatgroup.[id]权限节点
+  # 权限示例：cmi.chatgroup.2
   GroupFormat:
-    '1': '{prefix}&f{displayName}&f: &r{message}'
-    '2': '{prefix}&f{displayName}&7: &r{message}'
-    '3': '{prefix}&f{displayName}&8: &r{message}'
+    '1': '[%multiverse_world_alias%&r]%playerTitle_use%&f{displayName}&7 >> &r{message}'
+    '2': '[%multiverse_world_alias%&r]%playerTitle_use%&9{displayName}&7 >> &r{message}'
+    '3': '[%multiverse_world_alias%&r]%playerTitle_use%&4{displayName}&7 >> &r{message}'
   Colors:
-    # If set to true then all public messages will be filtered from color codes and will allow to colorize them with appropriate permission node
+    # 如果设置为true，则所有公共消息将从颜色代码中过滤，并允许使用适当的权限节点对它们进行着色
     # cmi.colors.publicmessage.[colorName]
-    # Colors: black(&0), darkblue(&1), darkgreen(&2), darkaqua(&3), darkred(&4), darkpurple(&5), gold(&6), gray(&7), darkgray(&8), blue(&9), green(&a), aqua(&b), red(&c), lightpurple(&d), yellow(&e), white(&f), magic(&k), bold(&l), strikethrough(&m), underline(&n), italic(&o), reset(&r)
+    # 颜色: black(&0), darkblue(&1), darkgreen(&2), darkaqua(&3), darkred(&4), darkpurple(&5), gold(&6), gray(&7), darkgray(&8), blue(&9), green(&a), aqua(&b), red(&c), lightpurple(&d), yellow(&e), white(&f), magic(&k), bold(&l), strikethrough(&m), underline(&n), italic(&o), reset(&r)
     PublicMessage: false
     PrivateMessage: true
-    # If set to true then /me messages will be filtered from color codes and will allow to colorize them with appropriate permission node
+    # 如果设置为true，则/me消息将从颜色代码中过滤出来，并允许使用适当的权限节点对其进行着色
     # cmi.colors.me.[colorName]
     me: true
-    # If set to true, then color codes will get removed from text instead of leaving them if player dont have appropriate permission node for that color
+    # 如果设置为true，则颜色代码将从文本中删除，而不是在播放器没有适当颜色权限的节点时保留颜色代码
     CleanUp:
       publicmessage: true
       privatemessage: true
       me: true
       signs: false
       books: true
-      # List of strings to ignore when checking chat for color codes player cant use.
-      # This will bypass players colorcode restrictions and will allow usage of particular chat formats
-      # Applies only for public and private messages
+      # 检查聊天时玩家不能使用的颜色代码时要忽略的字符串列表。
+      # 这将绕过玩家的颜色代码限制，并允许使用特定的聊天格式
+      # 仅适用于公共和私人消息
       WhiteList:
       - '&c❤&7'
-    # If set to true then nickName will be filtered from color codes when player changes it
+    # 如果设置为true，则当玩家更改昵称时，昵称将从颜色代码中过滤掉
     # cmi.colors.nickname.[colorName]
     NickName: true
   ChatFilter:
     Enabled: false
     Deny:
       ipBlock:
-        # If not set to true, this filter will not be used
+        # 如果未设置为true，则将不使用此过滤器
         Enabled: true
-        # Defines filter group and defines required permission node to bypass this filter: cmi.chatfilter.bypass.[groupName]
+        # 定义过滤器组并定义所需的权限节点以绕过此过滤器：cmi.chatfilter.bypass.[groupName]
         Group: Advertising
-        # When set to true, each time player triggers filter, console will receive information about who triggered it, which filter and with what message
+        # 设置为true时，每次播放器触发过滤器时，控制台都会收到有关触发该过滤器的人，过滤器和消息的信息。
         InformConsole: true
-        # Regex expresion to filter by. How to use regex https://regexone.com/
+        # 正则表达式过滤. How to use regex https://regexone.com/
         Regex:
         - '[a-zA-Z0-9\-\.]+\s?(\.|dot|\(dot\)|-|;|:|,|_|\/)\s?([a-zA-Z]{2}|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)\b'
         - \b[0-9]{1,3}(\.|dot|\(dot\)|-|;|:|,|(\W|\d|_)*\s)+[0-9]{1,3}(\.|dot|\(dot\)|-|;|:|,|(\W|\d|_)*\s)+[0-9]{1,3}(\.|dot|\(dot\)|-|;|:|,|(\W|\d|_)*\s)+[0-9]{1,3}\b
-        # With what we need to replace word, if not defined found expresion will not be changed
+        # 用我们需要替换的单词，如果未定义，发现的表达式将不会改变
         ReplaceWith: ''
-        # possible: none, others, all
-        # Where 'none' means everyone will receive this message
-        # 'others' means that sender will get message but not other players, this is usefull to prevent advertising and silently block it
-        # 'all' means that no one will receive sent message
+        # 可能的值: none, others, all
+        # 'none' 表示每个人都会收到此消息
+        # 'others' 表示发件人将收到消息，而其他玩家则不会，这对于防止广告和无声阻止消息很有用
+        # 'all' 意味着没有人会收到发送的消息
         BlockType: others
-        # Players with cmi.chatfilter.inform permisison will receive defined message when rule is broken
+        # 违反规则时，具有cmi.chatfilter.inform权限的玩家将收到已定义的消息
         msgToStaff: '&4!&6[playerName] &4advertising with: &r[message]'
-        # List of commands to perform when rule is broken. Use [senderName] to include message sender name. Supports global variales same as locale file
+        # 违反规则时要执行的命令列表。 使用[senderName]包含消息发件人名称。 支持与语言环境文件相同的全局变量
         Commands: []
       swearing1:
         Enabled: true
@@ -809,37 +813,37 @@ Chat:
         msgToStaff: '&4!&6[playerName] &4swearing'
         Commands:
         - msg [senderName] &eDon't swear!
-    # List of regex filter to exlude from block list. Usefull if you want to block all ip/host address but want to allow usage of your own server.
+    # 要从阻止列表中排除的正则表达式过滤器列表。如果要阻止所有ip/主机地址，但又希望允许使用自己的服务器，则很有用。
     WhiteList:
     - \bgoogle.\s?([a-zA-Z]{2,4})\b
     - \bspigotmc.\s?([a-zA-Z]{2,4})\b
     DuplicatedMessagePrevention:
-      # When set to true, plugin will prevent spaming of same or similar messages in short time range. Can be bypased with cmi.chatfilter.spambypass permission
+      # 设置为true时，插件将阻止在短时间内发送相同或相似消息的垃圾消息。可以使用cmi.chatfilter.spambypass权限进行绕过
       Use: false
-      # How much in percentage message is counted as same
+      # 相同百分比的消息计数
       Percentage: 80
-      # Defines how often in seconds you can send same/similar message
+      # 定义您可以多久发送一次相同/相似的消息（秒）
       Interval: 5
-      # How many commands you can repeat before stopped for cooldown
+      # 您可以在停止冷却之前重复多少个命令
       MinAmount: 2
-  # If set to true, players public message who is in your ignore list will not be shown
+  # 如果设置为true，则不会显示您屏蔽列表中的玩家公开消息
   IgnorePublicMessage: true
   Tag:
-    # Enable or not tag system. This will inform player with his name mentioning in public chat if name have @ in front of it
+    # 启用@系统。 如果名字前面有@，这将通知玩家在公开聊天中提及他的名字
     Enabled: true
-    # When this is set to true, any player mentionings in public messages will be colorized and player will get informed as usual
-    # This is allot more heavier on server than usual tagging with @, so enable if you know what you are doing
+    # 如果将其设置为true，则公共消息中任何@玩家的内容都将变为彩色，并将照常通知玩家
+    # 在服务器上，这比使用普通的@负担更重，因此，如果您知道自己在做什么，请启用它。
     HardCoreMode: false
-    # Determines color of taged user name in chat with @ in front of name/nickname. Sender should have cmi.tag.color
+    # 确定在姓名/昵称前与@聊天时标记的用户名的颜色。 发件人应具有cmi.tag.color
     Color: '&c'
-    # Commands to be performed when player is tagged
-    # Variables like [playerName] will be replaced with tagged player name
-    # You can use [senderName] to include player name who tagged
+    # @玩家时要执行的命令
+    # 像[playerName]这样的变量将被标记的玩家名称替换
+    # 您可以使用[senderName]包括标记了姓名的玩家名称
     CommandsOnTag:
     - asConsole! cmi sound BLOCK_NOTE_BLOCK_HARP:3:1 [playerName] -s
-    # Will performd tag commands only when player is afk
+    # 仅当玩家是afk时才执行标签命令
     OnlyWhenAfk: false
-    # When set to true, @ simbol will be removed
+    # 设置为true时，@符号将被删除
     RemoveEta: false
 Command:
   CommandFilter:
