@@ -939,54 +939,55 @@ Spawners:
   # 这将禁用诸如刷怪笼放置，刷怪笼掉落，刷怪笼收费等功能。
   FullDisable: false
   Break:
-    # 为刷怪笼中断启用或禁用刷怪笼处理程序
-    # 如果启用，则如果使用Silktouch镐并且具有cmi.dropspawner权限节点，则玩家将生成刷怪笼
+    # 是否启用为刷怪笼破坏时的处理机制
+    # 如果启用，则如果使用丝质镐并且具有cmi.dropspawner权限节点，则玩家将能获得刷怪笼
     # 如果玩家具有cmi.dropspawner.nosilk权限节点，则不需要玩家使用丝质镐来挖掉刷怪笼
     Enabled: false
-    # 如果设置为true，则播放器将需要具有特定的权限节点才能断开并获取特定的生成器。
-    # 例如：玩家应该具有cmi.dropspawner.pig来破坏猪的生成器并使其掉落，或者具有cmi.dropspawner.zombie来获取僵尸的生成器
+    # 如果设置为true，则玩家将需要具有特定的权限节点才能打破并获取特定的刷怪笼。
+    # 例如：玩家应该具有cmi.dropspawner.pig来破坏猪的刷怪笼并使其掉落，或者具有cmi.dropspawner.zombie来获取僵尸的刷怪笼
     RequiresExactPermission: false
-    # When set tp false, exp will not be dropped from broken spawner independent if spawner it self is being dropped
-    # When set to true exp will be dropped only if spawner is not
+
+    # 设置为false时，如果掉落了刷怪笼，则不会在破碎的刷怪笼中掉落经验
+    # 设置为true时，仅当不掉落刷怪笼时才会掉落经验
     DropExp: false
-    # Minimal silktouch level required to get spawner back
+    # 能获取刷怪笼的最低silktouch等级
     SilkTouchLevel: 1
-    # Number in percentage from 0 up to 100 for a spawner to be dropped when you break one
+    # 刷怪笼掉落的几率（百分比）
     BaseDropChance: 100
   Place:
-    # Enable or disable spawner handler for spawner place
-    # If enabled player will place spawner depending from what it is by its type
-    # If disabled then spawner will be placed in normal way and it will allow other plugins to handle its placement
+    # 是否启用刷怪笼放置
+    # 如果启用，玩家能根据类型来放置刷怪笼
+    # 如果关闭，刷怪笼将按照常规的方式放置，并能允许其他插件处理其放置
     Enabled: true
-    # If set to true, player will need to have appropriate permission node to place spawner by its type
+    # 如果设置为true，则播放器将需要具有适当的权限节点才能按其类型放置刷怪笼
     RequiresPermission: false
-    # RequiresPermission should be set to true for this to work. If set to true, player will need to have particular permission node to place particular spawner.
-    # In example: player should have cmi.placespawner.pig to place pig spawner, or cmi.placespawner.zombie to place zombie spawner
-    # If set to false, then player will need to have basic cmi.placespawner permission to place any type of spawner
+    # RequiresPermission设置为true才能起作用。如果设置为true，玩家需要有特定权限节点才能放置特定刷怪笼
+    # 例如: 玩家需要拥有cmi.placespawner.pig节点才能放置猪刷怪笼, 或者cmi.placespawner.zombie节点放置僵尸刷怪笼
+    # 如果设置为false, 玩家只需要拥有基础的cmi.placespawner权限节点就能放置任何刷怪笼
     RequiresExactPermission: false
   Interact:
-    # When set to true, players trying to change spawner with monster egg will require appropriate permission node
-    # In example: player should have cmi.egginteract.pig to change spawner into pig, or cmi.egginteract.zombie to change into zombie spawner
+    # 当设置为true时，玩家如果要使用刷怪蛋修改刷怪笼的类型时需要权限节点
+    # 例如: 玩家需要拥有cmi.egginteract.pig节点才能改为猪刷怪笼, 或者cmi.egginteract.zombie节点修改为僵尸刷怪笼
     EggRequiresPermission: false
-  # If set to true, spawners will have chance to be dropped when destroying with tnt
+  # 当设置为true时，用tnt炸毁刷怪笼将有几率使其掉落
   TnTExplosionDrop:
     use: false
-    # Chance in percentage for spawner to drop
+    # 掉落几率（百分比）
     Chance: 30
-  # If set to true, spawners will have chance to be dropped when destroyed by creeper
+  # 当设置为true时，苦力怕炸毁刷怪笼时有几率使其掉落
   CreeperExplosionDrop:
     use: false
     Chance: 30
   Charges:
-    # When enabled players will be assigned to particular spawner charges group who have cmi.spawners.charge.[groupName] permission node
-    # Players will be limited to how many spawners they can mine
-    # StartingCharge will determine how many charges they will have on first time joining group
-    # MaxCharge will limit to how many charges you can have at one time
-    # Cooldown determines how often new charge will be given
-    # Bonus is optional and it will determine by how many seconds to lower cooldown for next charge when placing spawner
-    # Option to bypass limitations with cmi.spawners.charge.bypass
+    # 启用后会将玩家分配到具有cmi.spawners.charge.[groupName]权限节点的特定刷怪笼收费组
+    # 玩家能挖掘刷怪笼的数量将受到限制
+    # StartingCharge将确定他们首次加入群组后将收取多少费用
+    # MaxCharge将限制你一次可以收取的费用
+    # Cooldown决定多久能收取新费用
+    # Bonus是可选的，它决定当放置刷怪笼时能减少多少秒冷却时间
+    # 使用cmi.spawners.charge.bypass权限节点能绕过
     Use: false
-    # If set to true when player runs out of spawner charges spawner will be destroyed without droping it
+    # 如果设置为true，当玩家用完了刷怪笼费用后刷怪笼将被破坏而没有掉落
     BreakWithoutCharge: false
     List:
       Noob:
@@ -1002,35 +1003,35 @@ Spawners:
         Cooldown: 3000
         Bonus: 10
   Proximity:
-    # Allws to limit how tight spawners can be placed from each other
+    # 允许限制刷怪笼放置的密集程度
     Use: false
-    # Radius in blocks from blaced block. Max range is 16
-    # Can bypass with cmi.spawners.proximity.bypass
+    # 半径以方块为单位，最大值为16
+    # 可以通过cmi.spawners.proximity.bypass权限节点绕过检查
     Range: 3
 # 物品重命名
 ItemRenaming:
-  # When set to true, players will be denyied from renaming defined items
-  # Option to define specific name by using regex format
+  # 设置为true时，玩家将被禁止重命名特定的物品
+  # 使用正则表达式来表示特定名称
   Prevent: false
   List:
   - mobspawner:([A-z]+ (?i)\w*spawner)
 SpawnMob:
-  # Defines how many passengers entities can be spawned at once
+  # 定义一次能产生多少骑乘的实体
   MaxQuantity: 10
   MaxPassengers: 10
 Counter:
-  # Default range to use when performing /counter start
+  # 执行/计数器开始时要使用的默认范围
   Range: 10
 Mirror:
-  # Defines how far in blocks from mirror center you can build
-  # This is mainly to protect from forgeting to turn off mirror and starting to build on different side of map
+  # 定义你可以放置的距离镜像中心的最远距离
+  # 这个主要是为了防止忘记关闭镜像而开始在地图的另一边建筑的情况
   MaxRange: 50
 NetherPortal:
-  # Can prevent nether portal creation entirely. Option to bypass with cmi.netherportalbypass
+  # 可以完全禁止创建地狱传送门，可以使用cmi.netherportalbypass权限节点绕过
   PreventCreation: false
-  # Maximum height nether portal can be created. Vanilla size is 23
+  # 创建地狱门的最大高度，原版为23
   MaxHeight: 23
-  # Maximum width nether portal can be created. Vanilla size is 23
+  # 创建地狱门的最大宽度，原版为23
   MaxWidth: 23
 Portals:
   # Defines in milliseconds how often to check if player entered portal or not
