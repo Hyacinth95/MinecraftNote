@@ -1022,10 +1022,12 @@ SpawnMob:
 Counter:
   # 执行/计数器开始时要使用的默认范围
   Range: 10
+# 镜像
 Mirror:
   # 定义你可以放置的距离镜像中心的最远距离
   # 这个主要是为了防止忘记关闭镜像而开始在地图的另一边建筑的情况
   MaxRange: 50
+# 地狱门
 NetherPortal:
   # 可以完全禁止创建地狱传送门，可以使用cmi.netherportalbypass权限节点绕过
   PreventCreation: false
@@ -1033,184 +1035,203 @@ NetherPortal:
   MaxHeight: 23
   # 创建地狱门的最大宽度，原版为23
   MaxWidth: 23
+# 传送门
 Portals:
-  # Defines in milliseconds how often to check if player entered portal or not
-  # Bigger numbers can help slightly lower server load but small portals, 1 block depth without back wall can be passed through without teleportations if player moves fast enought
+  # 检查玩家是否进入传送门的频率（毫秒）
+  # 较大的数值能稍微降低服务器的负荷，但是如果玩家移动足够快而传送门深度只有一格将无法传送
   CheckInterval: 300
-  # Defines in milliseconds how often to check if player entered portal range for particles to apear
+  # 检查玩家是否进入传送门并且出现粒子效果的频率（毫秒）
   CheckParticleInterval: 500
-  # Perform commands on teleport or not
+  # 是否在传送中执行命令
   PerformCommands: true
-  # Commands to be performed on teleport event
+  # 传送事件中要执行的命令
   Commands:
   - cmi effect [playerName] blindness 2 1 -s
+# 坐下
 Animations:
-  # Enable siting on stair block by clicking on them with empty hand or by looking and using command
-  # Requires cmi.command.sit.stairs
+  # 启用通过空手点击楼梯或看着楼梯使用命令来坐在楼梯上
+  # 需要cmi.command.sit.stairs权限
   SitOnStairs: true
   StairsAsChairs: true
   SlabsAsChairs: true
   CarpetsAsChairs: false
   RemoveFromChairOnDamage: true
-  # Player will sit on chair only after rapid double click
+  # 快速双击才能坐在楼梯上
   DoubleClick: false
-  # Delay in milliseconds between clicks to sit on chair when double click is enabled
+  # 启用双击模式后两次点击的最大延迟间隔（毫秒）
   DoubleClickDelay: 200
-  # Range in blocks from player to look up for valid chair block
+  # 查找可用楼梯方块的范围（方块）
   ChairRange: 4
-# All possible damage causes: contact, entity_attack, entity_sweep_attack, projectile, suffocation, fall, fire, fire_tick, melting, lava, drowning, block_explosion, entity_explosion, void, lightning, suicide, starvation, poison, magic, wither, falling_block, thorns, dragon_breath, custom, fly_into_wall, hot_floor, cramming, dryout, 
-# Syntax should be [permissionNode]:[damageCause]:[multiplier]
-# Example: nolavadamage:lava:0 will prevent lava damage with cmi.damagecontrol.nolavadamage permission node
-# Negative values will heal player instead of damaging him
-# If player have more than one permission node for same damage cause, then last one in list will be used to determine final damage
+# 所有可能造成伤害的原因: contact, entity_attack, entity_sweep_attack, projectile, 
+# suffocation, fall, fire, fire_tick, melting, lava, drowning, block_explosion, 
+# entity_explosion, void, lightning, suicide, starvation, poison, magic, wither, 
+# falling_block, thorns, dragon_breath, custom, fly_into_wall, hot_floor, cramming, dryout, 
+# 格式为：[permissionNode]:[damageCause]:[multiplier]
+# 例子: nolavadamage:lava:0 将使用cmi.damagecontrol.nolavadamage权限节点来防止岩浆伤害
+# 负值将会治愈玩家而不是伤害玩家
+# 如果玩家拥有多个权限节点并且伤害原因相同的话取决于列表的最后一个来决定伤害
 DamageControl:
 - nowalldamage:fly_into_wall:0
 - lowermagmacubedamage:hot_floor:0.5
+# 不死图腾
 Totem:
-  # When this set to true, on players death totem will be used even if he is not holding it in hand
-  RemoveFromInventory: false
+  # 设置为true时，即使不拿在手上也会被使用
+  RemoveFromInventory: true
   Cooldown:
-    # When this set to true player can use totem only every X second's
-    Use: false
-    Time: 600
+    # 设为true时，玩家只能每隔X秒使用一次图腾
+    Use: true
+    Time: 300
   Warmup:
-    # When this set to true player can use totem to have X amount of second's, during which he can die and be resurected
-    # Totem will be consumed durring activation and wont be returned even if resurection is not used during warmup time
-    Use: false
+    # 玩家可以使用图腾，获得一个受保护的时间段，在此时间段可以死亡并复活
+    # 图腾会在激活之后消耗掉，即使玩家在受保护的时间段内未死亡也不会返还
+    Use: true
     Time: 10
-  # If player falls into void while having totem, he will be teleported to respawn location and totem gets consumed
+  # 如果玩家在拥有图腾时掉入虚空，他将被传送到重生地点并消耗图腾
   ProtectFromVoid: true
+# 鞘翅
 Elytra:
-  # cmi.elytra - allows usage of elytra
-  # cmi.elytra.boost - allows usage of boost
-  # cmi.elytra.superboost - allows ussage of super boost
-  # cmi.elytra.speedometer - allows to see speedometer
+  # cmi.elytra - 允许使用鞘翅
+  # cmi.elytra.boost - 允许使用推进
+  # cmi.elytra.superboost - 允许使用超级推进
+  # cmi.elytra.speedometer - 允许查看车速
+  # 助推
   Boost:
-    # Max speed until player wont get any boost
+    # 通过助推能获得的最高速度
     SpeedLimit: 200
-    # When enabled items/exp wont be consumed if player is over speed limit
+    # 如果玩家超过速度限制则不会消耗物品/经验
     SpeedLimitStop: false
-    # Do you want to show decimals in speed
+    # 是否显示速度小数点
     SpeedDecimals: true
-    # By how much boost player on each use
+    # 每次使用的助推的增量
     GeneralMultyplier: 0.1
-    # By how much boost player on each super boost use
-    # Use shift while using simple boost
+    # 超级助推的增量
+    # 普通助推的同时按下shift
     SuperMultyplier: 0.3
-    # Uses defined items instead of exp
+    # 使用定义的物品而不是经验
     UseItems: false
-    # Item material name
-    # Set it to AIR if you want to allow boost without holding any particular item in your hand
-    # Keep in mind that you still need to hold any item or click left moust button for it to work when its set to AIR
+    # 物品
+    # 如果想没有手持任何物品的时候助推可以将其设置为AIR
+    # 请记住，即使设置为AIR，仍然需要拿着任何物品或者左键单击才能助推
     Item: FEATHER
-    # Item material name
-    # Set it to AIR if you want to allow launch to be performed without holding any particular item in your hand
-    # Keep in mind that you still need to hold any item or look at a block for it to work properly when its set to AIR
+    # 物品材质名
+    # 如果想没有手持任何物品的时候助推可以将其设置为AIR
+    # 请记住，即使设置为AIR，仍然需要拿着任何物品或者左键单击才能助推
     LaunchItem: FEATHER
-    # Requires to hold defined item in hand. Only when UseItems is set to false
+    # 需要拿着设定的物品，仅当UseItems为false时
     RequiresItem: true
-    # Amount consumed on each boost
+    # 每次推进消耗的金额
     Amount: 1
-    # Amount consumed on each super boost
+    # 每次超级助推消耗的金额
     SuperAmount: 5
-    # Shows particles when flying
+    # 飞行时使用粒子
     ShowParticles: true
+  # 发射
   Launch:
     Time: 2
-  # 1.13+ servers. Do you want to disable riptide enchant usage while flying with elytra and trident which has riptide enchant
-  # This combination is dangerous as player can reach extreme speed's if allowed to use it
-  DisableRiptide: false
+  # 1.13+的服务器是否要在使用鞘翅和三叉戟飞行时禁用激流附魔
+  # 这种组合非常危险，因为如果允许使用它，玩家可能会达到极限速度
+  DisableRiptide: true
   Fix:
-    # Disables option to damage yourself while flying with arrows to boost up
+    # 使用箭来助推时会伤害自己
     PreventSelfDamage: false
-    # Disables option to use rockets to boost yourself while flying with elytra
+    # 禁用飞行时可以使用火箭来助推
     PreventRocketUsage: false
-# 飞行收费
+# 飞行能量
 FlightCharge:
-  # When set to true, each time player gets flight charge or relogs, his fly mode will be toggled on
-  # If set to false, then players will have to manually turn on flight with /cmi flyc
+  # 设置为true时每当玩家获得飞行能量或者重新登录都会自动切换到飞行模式
+  # 如果设置为false，则玩家将必须使用/cmi flyc手动打开飞行
   EnabledByDefault: true
-  # When set to true, in event of player changing his game mode from survival/adventure to creative/spectator his flight charge  mode will get disabled
-  # Same applies when changing game mode from creative/spectator to survival/adventure
-  AutoSwitch: false
-  # How much it costs for one recharge point in exp points. Value can be in decimals, like 0.2 but it cant be equal or lower than 0
-  # Set to 0 to disable this type of recharge
-  ExpRechargeCost: 1.0
-  # How much it costs for one recharge point. Value can be in decimals, like 0.2 but it cant be equal or lower than 0
-  # Set to 0 to disable this type of recharge
+  # 如果为true，当玩家游戏模式从生存/冒险切换到创造/旁观者时，他的飞行能量模式将禁用
+  # 将游戏模式从创造/旁观者改为生存/冒险同样适用
+  # 自动切换
+  AutoSwitch: true
+  # 一个飞行能量点需要花费的经验费用，可以是小数但不能是负数
+  # 设置为0禁止此方式的能量充值
+  ExpRechargeCost: 0
+  # 一个飞行能量点需要花费的钱，可以是小数但不能是负数
+  # 设置为0禁用此方式的能量充值
   MoneyRechargeCost: 1.0
-  # Defines maximum amount of charge player can have
-  # One charge is one traveled block while flying
-  # if player doesn't move, then one charge for each second while hovering
+  # 定义玩家能用有的飞行能量最大值
+  # 一个能量点可以飞行一个方块的距离
+  # 如果玩家不动，则悬停的时候一秒收取一次费用
   MaxChargeLevel: 1000
-  # Defines multiplier when player doesn't move but is hovering. For each second player hovers.
-  # Set to 0 to disable
+  # 定义玩家停止不动悬停时每秒的收费倍数
+  # 设置为0以禁用
   DeductOnIdling: 1.0
-  # If this is set above 0, then player will loose defined amount of charges each second they are flying instead of traveled blocks
-  # Set to 0 to disable, which will deduct charges for traveled blocks
+  # 如果设置大于0，将根据飞行时间扣费而不是距离
+  # 设置为0以禁用，将以飞行距离收费
   DeductOnlyForTime: 0.0
-  # Defines multiplier when player falls down of charge to be taken
-  # This only effects when player falls from above 3 blocks of hight
-  # In example if player falls from 10 blocks height, then 7 * 2 = 14 charges will be taken
-  # This is to prevent avoiding no penalty from jumping from cliffs
-  # Set to 0 if you want to disable it
+  # 设置玩家跌落时要收取费用的倍数
+  # 只有当玩家跌落超过3格时才有效
+  # 例如玩家从10格高的地方跌落，将会扣除7*2能量点
+  # 这是为了避免从高处摔落的时候毫无惩罚
+  # 如果你想禁用它请将它设置为0
   DeductOnFallMulti: 2
-  # Defines if you want to damage player when he falls down from higher than 3 blocks height
-  # This will not kill player even if he would drop from 200 block height, but will leave him with 1 hp
-  # This will only effect players who jumped down and not those who disabled fly mode in mid air
+  # 定义从高于3格摔落时是否要给予玩家伤害
+  # 即时他从200格的高度摔落也不会死掉，会给他留下1hp
+  # 这只会影响在空中禁用飞行模式而摔落的玩家
   DamageOnFall: true
-  # DamageOnFall should be enabled for this to work
-  # This will define if you want to damage player when he deactivates fly mode in mid air
+  # DamageOnFall需要启用这个设置才能生效
+  # 这将定义玩家在空中关闭飞行模式时受到的伤害
   DamageOnToggle: false
-  # DamageOnFall should be enabled for this to work
-  # This will define if you want to kill player if fall damage if higher than his health amount
+  # 摔落伤害高于生命值时是否杀死玩家
   KillOnFall: false
 Point:
-  # Default particle for point command. Options: fireworks_spark, crit, magic_crit, potion_swirl, potion_swirl_transparent, spell, instant_spell, witch_magic, note, portal, flying_glyph, flame, lava_pop, footstep, splash, particle_smoke, explosion_huge, explosion_large, explosion, void_fog, small_smoke, cloud, coloured_dust, snowball_break, waterdrip, lavadrip, snow_shovel, slime, heart, villager_thundercloud, happy_villager, large_smoke, water_bubble, water_wake, suspended, barrier, mob_appearance, end_rod, damage_indicator, sweep_attack, totem, spit, squid_ink, bubble_pop, current_down, bubble_column_up, nautilus, dolphin, 
+  # /cmi point命令的默认粒子. 选项: fireworks_spark, crit, magic_crit, potion_swirl, potion_swirl_transparent, spell, 
+  # instant_spell, witch_magic, note, portal, flying_glyph, flame, lava_pop, footstep, splash, particle_smoke, 
+  # explosion_huge, explosion_large, explosion, void_fog, small_smoke, cloud, coloured_dust, snowball_break, 
+  # waterdrip, lavadrip, snow_shovel, slime, heart, villager_thundercloud, happy_villager, large_smoke, water_bubble, 
+  # water_wake, suspended, barrier, mob_appearance, end_rod, damage_indicator, sweep_attack, totem, spit, squid_ink, 
+  # bubble_pop, current_down, bubble_column_up, nautilus, dolphin, 
   DefaultParticle: COLOURED_DUST
 Messages:
   Login:
-    # If set to true, login message wont be shown
+    # 设置为true则不会显示登录消息
     Disabled: false
-    # Defines number of players from which to automatically start hiding join messages
-    # Set to -1 to disable this
+    # 设置服务器在线多少人以上不会显示登录消息
+    # 设置-1禁用
     AutoHideFrom: -1
     Custom:
-      # If set to true, custom login message will be used. cmi.messages.disablelogin can be used to disable message for player
+      # 如果设置为true则使用自定义的登录消息，cmi.messages.disablelogin节点可以用于禁用登录消息
       Use: false
   Logout:
-    # If set to true, logout message wont be shown
+    # 设置为true则不会显示退出消息
     Disabled: false
-    # Defines number of players from which to automatically start hiding logout messages
-    # Set to -1 to disable this
+    # 设置服务器在线多少人以上不会显示退出消息
+    # 设置-1禁用
     AutoHideFrom: -1
     Custom:
-      # If set to true, custom logout message will be used. cmi.messages.disablequit can be used to disable message for player
+      # 如果设置为true则使用自定义的退出消息，cmi.messages.disablequit节点可以用于禁用退出消息
       Use: false
-  # Check locale file for translation and custom placeholders: [playername], [totalUsers], [onlinePlayers]
+  # 检查语言环境文件以获取翻译和自定义占位符：[playername]，[totalUsers]，[onlinePlayers]
   FirstJoinMessage:
     Use: false
   DeathMessage:
-    # Defines number of players from which to automatically start hiding death messages
-    # Set to -1 to disable this
+    # 设置服务器在线多少人以上不会显示死亡消息
+    # 设置-1禁用
     AutoHideFrom: -1
 Books:
-  # Defines default creator name for books when using getbook command
+  # 定义/getbook命令创建书籍的默认创建者名称
   DefaultAuthor: Server
-  # When set to true books write date will be added
+  # 设置为true时将添加书写日期
   AddDate: false
-# Defines name of customtext on players login to server. To disable just set name to non existing customText
+# 定义玩家登录服务器时发送的自定义文本名称。如果要禁用只需要设置为不存在的customTest即可
 Motd: welcomeMessage
+# 警告
 Warnings:
+  # 默认警告类型
   Default:
     LifeTime: 86400
+    # 累加违规点数
     Points: 1
-    DefaultReason: '&7Violated server rules'
+    # 警告原因
+    DefaultReason: '&7违反服务器规则'
+  # 分类
   Categories:
     Swear:
       LifeTime: 86400
       Points: 3
-      DefaultReason: '&7Swearing'
+      DefaultReason: '&7骂人'
     Grief:
       LifeTime: 86400
       Points: 10
@@ -1218,24 +1239,29 @@ Warnings:
     Bug:
       LifeTime: 86400
       Points: 30
-      DefaultReason: '&7Using bugs'
+      DefaultReason: '&7使用bug'
     Cheat:
       LifeTime: 86400
       Points: 50
-      DefaultReason: '&7Using cheats'
+      DefaultReason: '&7使用作弊'
+  # 警告时相应的执行操作，数字对应Points
   Perform:
+    # 到达3点违规点数时执行的命令
     '3':
     - cmi mute [playerName] 10m
-    - cmi msg [playerName] !&cMuted for &710 &cminutes for getting &73 &cwarnings!
+    - cmi msg [playerName] !&7因为积累了3个&c违规点数&7被禁言了10&c分钟&7！
+    # 到达5点违规点数时执行的命令
     '5':
-    - cmi kick [playerName] &cKicked for getting 5 warnings!
+    - cmi kick [playerName] &c因为积累了5个违规点数被踢出了游戏！
+    # 到达10点违规点数时执行的命令
     '10':
-    - cmi tempban [playerName] 5m &cTemporary banned for getting 10 warnings!
+    - cmi tempban [playerName] 5m &c因为积累了10个违规点数被暂时封禁了！
+# 出生点
 Spawn:
-  # Forces players to login in defined spawn point when logging into server
+  # 强制玩家在已定义的出生点登录
   SpawnOnJoin: false
-  # Defines players spawn point after death if set to true, if not, then it will be used only for /cmi spawn command
-  # RespawnLocation will indicate if you want to use this location as possible respawn point for player after death
+  # RespawnLocation用来设置是不是要作为玩家死亡后的重生点
+  # 如果为true，定义玩家死亡后的出生点，如果不是，只作为/cmi spawn命令的传送点来使用
   Main:
     World: spawn
     X: 0.5
@@ -1245,7 +1271,7 @@ Spawn:
     Yaw: 0.11803943
     RespawnLocation: false
     Rng: 0
-  # Defines players first spawn point when he logs into server for the first time
+  # 定义玩家首次登录服务器时的出生点
   FirstSpawn:
     Use: true
     World: None
@@ -1254,14 +1280,17 @@ Spawn:
     Z: 0.0
     Pitch: 0.0
     Yaw: 0.0
+# 新手礼包
 Newbie:
-  # Kit name to give for new players joining server
-  Kit: Newbie
+  # 为新玩家加入服务器提供的礼包名称
+  Kit: 新手礼包
+# 礼包
 Kits:
-  # When set to true, kit list will be shown in GUI instead of chat list
+  # 设置为true时，工具包列表将会在GUI中显示而不是聊天栏中
   GUI: true
-  # When set to true, kit selection gui empty fields will get filled with definet item
+  # 设置为true时，工具包选择gui中的空字段将被定义项填充
   FillEmptyFields: true
+  # 按键图标
   Buttons:
     Cooldown: Watch
     Usages: STONE_PLATE
@@ -1269,52 +1298,58 @@ Kits:
     Exp: EXP_BOTTLE
     Desc: WOOL:13
     Back: Fence
+# 地标
 Warps:
-  # When set to true, warps list will be shown in GUI instead of chat list
+  # 当设置为true时，地标列表将会在GUI中显示，而不是聊天栏
   GUI: true
-  # Automatically opens GUI when created new warp point
+  # 创建新的地标时自动打开GUI
   GUIOnCreation: true
-  # Minimal lenght of warp name
+  # 地标名字的最短长度
   MinLenght: 4
-  # Maximal lenght of warp name
+  # 地标名字的最长长度
   MaxLenght: 16
-  # How many warps to show in each page
+  # 每页显示多少个地标
   perPage: 50
-  # Do you want to show creator in warp list
+  # 是否要在地标列表显示创建人的名字
   showCreator: false
-  # When set to true, new warps by default will require permission node to use them
+  # 当设置为true时，新的地标默认需要权限节点才能使用
   requirePerm: false
 GlobalGui:
-  # Defines item type in empty fields in GUI when its needed to be filled up
+  # 需要填写项目时，在空白的地方填充的物品
   EmptyField: BLACK_STAINED_GLASS_PANE
+# 动态范围
 DynamicViewRange:
-  # By setting to true will enable dynamic view range feature. Its still in beta stage and can result in some CPU load increase.
-  # Don't enable if you are not using this feature on your server
+  # 通过设置为true将启用动态视图范围功能。它仍处于beta阶段，可能会导致CPU负载增加。
+  # 如果您未在服务器上使用此功能，请不要启用
   Enabled: false
+# 世界限制
 WorldLimits:
-  # 通过设置为true的飞行和游戏模式限制，如果玩家没有适当的权限节点，则世界上每个玩家的限制都将应用于玩家
+  # 如果设置为true，如果玩家没有对应的权限节点，则根据世界的限制来判断玩家权限
   Enabled: false
-  # 具有默认游戏模式的世界列表
-  # 如果玩家将拥有cmi.worldlimit.gamemode.bypass权限节点，则不会更改游戏模式
+  # 世界的默认游戏模式
+  # 如果玩家有cmi.worldlimit.gamemode.bypass权限节点，则不会改变玩家的游戏模式
   # 可能的模式：creative, survival, adventure, spectator
   Gamemode:
   - world:Survival
   # 如果玩家将拥有cmi.worldlimit.fly.bypass权限节点，则不会更改飞行模式
   Fly:
   - world:False
-  # 设置为false时，只有具有cmi.worldlimit.fly.aboveroof的玩家才能飞过世界建筑限制
+  # 设置为false时，只有具有cmi.worldlimit.fly.aboveroof的玩家才能飞过世界建筑限制高度
   FlyAboveRoof: true
-  # 飞越屋顶限制
+  # 飞行高度限制
   FlyAboveRoofLimitations:
   - world-256
   - world_nether-128
   - world_the_end-256
   - cs-256
   - spawn-256
-  # If player will have cmi.worldlimit.god.bypass permission node, fly mode wont be changed
+  # 如果玩家有cmi.worldlimit.god.bypass权限节点，则模式不会被改变
   GodMode:
   - world:False
-  # Prevents particular entity spawn reasons in defined worlds. All possible reasons: NATURAL, JOCKEY, CHUNK_GEN, SPAWNER, EGG, SPAWNER_EGG, LIGHTNING, BUILD_SNOWMAN, BUILD_IRONGOLEM, BUILD_WITHER, VILLAGE_DEFENSE, VILLAGE_INVASION, BREEDING, SLIME_SPLIT, REINFORCEMENTS, NETHER_PORTAL, DISPENSE_EGG, INFECTION, CURED, OCELOT_BABY, SILVERFISH_BLOCK, MOUNT, TRAP, ENDER_PEARL, SHOULDER_ENTITY, DROWNED, SHEARED, EXPLOSION, RAID, PATROL, CUSTOM, DEFAULT
+  # 在世界中设置实体因为某些原因不能被生成. 可以使用的原因: NATURAL, JOCKEY, CHUNK_GEN, SPAWNER, EGG, SPAWNER_EGG, 
+  # LIGHTNING, BUILD_SNOWMAN, BUILD_IRONGOLEM, BUILD_WITHER, VILLAGE_DEFENSE, VILLAGE_INVASION, BREEDING, 
+  # SLIME_SPLIT, REINFORCEMENTS, NETHER_PORTAL, DISPENSE_EGG, INFECTION, CURED, OCELOT_BABY, SILVERFISH_BLOCK, 
+  # MOUNT, TRAP, ENDER_PEARL, SHOULDER_ENTITY, DROWNED, SHEARED, EXPLOSION, RAID, PATROL, CUSTOM, DEFAULT
   SpawnReasons:
     world:
     - None
@@ -1326,46 +1361,50 @@ WorldLimits:
     - None
     spawn:
     - None
-# Checks and shows on players login if he have been changed hes name over Mojang
-# Looks to be working only with online servers, duhhhh
+# 玩家登录时检查并显示玩家是否修改了原Mojang的ID
+# 这好像只能在在线服务器使用, duhhhh
 CheckForNameChange:
   OnLogin: false
   AmountToShow: 3
   OnInfoShow: true
-  # Do you want to perform commands
+  # 你是否想执行命令
   PerformCommandsOnNewName: false
-  # Command list to be performed in case player logs in with new name
+  # 玩家以新名字登录时应该执行的命令
   NameChangeCommands:
   - 'asConsole! cmi broadcast !&2[oldname] logged in with new name: [newname]'
+# 背包
 inv:
-  # Do you want to save the player's inventory on his death
+  # 你想在玩家死亡时保存背包吗
   SaveOnDeath: false
-  # When set to true, empty inventories (no items in inventory) will not be saved on players death
+  # 设置为true时，如果玩家死亡时是空背包则不会保存
   IgnoreEmpty: false
-  # If set to true then player should have cmi.saveinv permission node for inventory to be saved on death
+  # 设置为true时，仅当玩家拥有cmi.saveinv权限节点时才会在死亡时保存背包
   RequiresPermission: false
-  # How many inventories, we will keep for each player
+  # 为每个玩家保存多少次背包
   SavedInventories: 5
   restore:
-    # Set to false if you don't want to restore hp state on inventory load with /cmi invload command
+    # /cmi invload命令时是否恢复生命值状态
     HP: true
-    # Set to false if you don't want to restore players experience points
+    # /cmi invload命令时是否是否恢复经验值状态
     XP: true
-    # Set to false if you don't want to restore food state
+    # /cmi invload命令时是否恢复饱食度状态
     Food: true
-    # Set to false if you don't want to restore saturation level
+    # /cmi invload命令时是否恢复饱和度
     Saturation: true
-    # Set to false if you don't want to restore potion effects
+    # /cmi invload命令时是否恢复药水状态
     Potions: true
-    # Set to false if you don't want to restore items
+    # /cmi invload命令式是否还原物品
     Items: true
+# 饱食
 hunger:
-  # Do you want to give more than 20 hunger for players
+  # 你想给玩家超过20点的饱食度吗
   overide: false
+# 生命
 heal:
   RemoveNegative:
-    # Do you want to remove negative potion effects from player on heal
+    # 治疗玩家时是否移除负面药水效果
     use: false
+    # 负面效果列表
     List:
     - blindness
     - confusion
@@ -1376,109 +1415,118 @@ heal:
     - slow_digging
     - weakness
     - wither
+# 犯人
 Cuff:
-  # When set to false will allow players to talk who is cuffed
+  # 设置为false时，将允许玩家与被关注的人聊天
   Mute: true
   AllowedCommands:
   - msg
   - r
   - tell
+# 禁言
 Mute:
-  # When set to true, player will not be allowed to send private messages while he is muted
+  # 设置为true时，玩家可以跟被禁言的人私聊
   DenyPrivateMessages: true
+# 垃圾桶
 Dispose:
-  # defines how big is dispose ui 1-6
+  # 定义垃圾桶界面的大小 1-6
   UILines: 4
+# 物品维修
 ItemRepair:
+  # 修理共享
   RepairShare:
-    # When enabled will prevent players repairing items for others in anvil regular way. They still can use items and repairs normaly for them selfs
-    # Can be bypassed with cmi.command.repair.repairshare.bypass
+    # 启用后将禁止玩家使用铁砧维修，但是仍然可以正常使用物品并自修修理
+    # 可以通过cmi.command.repair.repairshare.bypass绕过
     ProtectNormalRepair: false
-    # When enabled will prevent players repairing items for others with CMI command. They still can use items and repairs normaly for them selfs
+    # 启用后禁止玩家用CMI命令给别人修理物品，但是可以自己修理
     ProtectCommandRepair: false
-    # Sets durability on item when another picks it up or selects in inventory. Set to 0 or less if you don't want to change durability
+    # 当其他人捡起或在背包中拿起物品时设置耐久度，如果你不想改变耐久度可以设置为0或更小的值
     Durability: 1
-    # When set to true, player who have cmi.command.repair permission will bypass this protection and can use other user repaired items without any additional actions
+    # 设置为true时，具有cmi.command.repair权限节点的玩家将绕过此限制，并且可以使用其他人修复过的物品，而没有任何操作
     BypassWithRepairPermission: true
-    # When enabled additional lore line will be added when player can't use that item. This will not be shown for owner of item
+    # 启用后，如果玩家不能使用该物品，则会添加附加的lore行，这不会显示给物品主人
     AddLore: true
-    # When set to true, interact event will be canceled to prevent item usage
+    # 设置为true时，交互事件将被取消放置物品被使用
     CancelEvent: true
-    # When set to true, player will get message informing about item usage he dint repaired him self
+    # 设置为true时，玩家会接收到他修理过的物品的使用情况
     InformWithMessage: true
   Repair:
-    # When item costs money, player will be required to confirm repair action by clicking message in chat
+    # 如果物品维修需要花钱，将要求玩家点击聊天栏中的确认消息才能修理
     Confirmation: true
-    # When set to true, item repair with /cmi repair will cost money depending on setup
-    # Player who performs command will pay repair cost
-    # If command gets performed from console, then player whose items are repaired will be paying
-    CostsMoney: false
-    # Base price to repair item
-    # If you have enabled durability check, then this value will wary depending on items condition
+    # 当设置为true时，通过/cmi repair命令修复的物品将要花钱，取决于设置
+    # 执行命令的玩家将支付维修费用
+    # 如果命令是由控制台执行的，则物品的所有者将会支付费用
+    CostsMoney: true
+    # 维修物品的基础价格
+    # 如果你开启了耐久度检查，这个值将会取决于物品的状态
     BasePrice: 100.0
-    # Item repair cost will depend on how baddly item is damaged
+    # 物品维修费用取决于物品损坏的严重程度
     CheckDurability: true
-    # Adds extra cost to repair depending on items cost set in /cmi setworth
-    # Value should be set from 0 to 100 range
+    # 根据/cmi setworth中设置的物品价值，增加额外的维修成本
+    # 值应设置为0到100范围
     WorthPercentage: 10.0
-    # Adds extra cost to repair depending on items enchantment cost set in /cmi setenchantworth
-    # Value should be set from 0 to 100 range
-    # If item has more then one enchantment, then prices will be added up
+    # 根据/cmi setenchantworth中设置的物品附魔费用，增加额外的维修费用
+    # 值应设置为0到100范围
+    # 如果一件物品具有一个以上的附魔，那么价格将加起来
     enchantWorthPercentage: 10.0
+# 冷却
 Cooldowns:
-  # You can enable any command cooldown to prevent instant usage of it
-  # cmi heal:180 means that player can use /cmi heal command only once every 180 seconds
-  # if cooldown set to -1 then this command can be performed only one time
-  # Administration can bypass limitations with cmi.cooldownbypass.[commandname] permission node
-  # Always use full command name and not its alias
-  # ATTENTION! If you have command like "/cmi home" and you want to prevent teleportation to home but allow gui opening without restrictions, use space after command, in example "cmi home :10"
+  # 你可以为任意命令设置冷却时间
+  # cmi heal:180 表示玩家每180s只能使用一次/cmi heal命令
+  # 如果设置为-1，代表此命令只能被执行一次
+  # 管理员可以通过使用cmi.cooldownbypass.[commandname]权限节点绕过此限制
+  # 请使用完整的命令名称，而不是别名
+  # 注意，如果有/cmi home之类的命令，并希望阻止玩家传送但不限制GUI的打开，请在命令后面加空格，如：cmi home :10
   Enabled: false
   List:
   - cmi heal:180
   - cmi feed:120
+  - cmi spawn:15
+  - cmi back:15
+# 战斗
 Combat:
-  # Defines combat timer to be used in particular features
+  # 用于特殊功能的战斗计时器
   Timer: 15
-  # Prevents damage from players with god mode enabled
-  # Can be bypassed with cmi.pvp.godBypass permission node
+  # 组织来自于上帝模式的玩家的伤害
+  # 可以使用cmi.pvp.godBypass权限节点绕过
   noGodDamage: true
-  # informs player that he cant damage players while in god mode
+  # 通知玩家在上帝模式下无法伤害玩家
   noGodDamageInform: true
-  # If set to true, then atacked player will be included into combat mode even if he doesnt fight back
-  # If set to false then only attacker will be marked for pvp mode
+  # 如果设置为true，则被攻击的玩家即使不进行反击也会被纳入战斗模式
+  # 如果设置为false，则仅将攻击者标记为pvp模式
   IncludeVictim: true
   Heads:
     Player:
       Drop: false
-      # Percentage from 0 to 100 for head to be dropped. Decimals are acceptable, like 0.2
-      # 100 will mean that head will be dropped every time player kills another player
-      # 1 will mean that there is 1% that player will drop head if he is killed by another player
+      # 玩家头颅掉落的几率（1-100），支持小数
+      # 100 表示玩家每次被击杀都会掉落头颅
+      # 1 表示玩家每次被击杀时有1%的机会掉落头颅
       Percentage: 1.0
-      # Percentage from 0 to 100 for lowering chance in getting second head of same player
-      # This will reset on each server restart
+      # 降低获得同一个玩家第二次掉落头颅的几率（1-100）
+      # 这将会在服务器重启的时候重置
       LowerChanceOfterDrop: 50.0
-      # When enabled player heads will have bigger chance to drop when using tools with looting enchantment
-      # Value is in % and it will add appropriate percentage to current drop chance by using drop chance itself
-      # For example player who has head drop change of 1% with looting 3 which has 30% bonus will have 1.3% as end value (default values)
-      # This only applies for player heads
-      # You can add as many levels as you want, simply duplicate line and set new number, in example
-      # Lvl33: 35.5
+      # 启用后如果使用了带有抢夺附魔的工具时头颅掉落的几率增加
+      # 值以百分比表示，表示增加基础掉落率的百分之多少的几率
+      # 例如，如果一名玩家的头颅掉落几率为1%，而抢夺3的加成为30%，则其最终掉落几率为1.3%
+      # 这仅适用于玩家头颅
+      # 可以添加任意数量的等级（前提是有意义）
+      # 如：Lvl33: 35.5
       LootBonus:
         Enabled: true
         Lvl1: 5.0
         Lvl2: 15.0
         Lvl3: 30.0
     Mob:
-      # Enables custom mob heads dropping from mobs with particular chance
-      # Check customHeads.yml for customization by entityType
+      # 使有特定几率从怪物身上掉落自定义的头颅
+      # 查看customHeads.yml文件来定制实体类型
       Drop: false
 ShulkerBoxes:
-  # When set to true, players will not have option to open shulker boxes while in combat
-  # Combat timer can be defined under combat section
+  # 设置外true时，玩家在战斗中无法打开shulker箱子
+  # 战斗计时器可以combat部分设置
   PreventInCombat: true
 Vanish:
-  # Defines default states of vanish edit options for players
-  # This will not have any effect if player already edited his vanish mode with vanishedit command
+  # 设置在隐身状态下玩家的默认选项
+  # 如果玩家已经使用了vanishedit命令编辑了他的消失模式，默认选项将不会起作用
   Defaults:
     damageToEntity: false
     playerDamage: false
@@ -1494,15 +1542,16 @@ Vanish:
     PrivateMessages: false
     relogDisable: false
     noMessages: false
+# 热身命令
 WarmUps:
-  # You can enable any command warmup to prevent instant command usage
-  # tp:5:false means that when player performs /tp command he will need to wait 5 sec
-  # false variable is optional and when its set to false player cant move while warmup is counting
-  # If you dont want to deny empty warp command but want to deny any extra variable after that, then just add space, in example 'warp :5:false'
-  # When setting warmups for CMI commands, use full command name and not allias, in example 'cmi warp:5false'
-  # Administration can bypass limitations with cmi.command.[comandName].warmupbypass permission node
-  # ATTENTION! cmi home command is being handled in special way and to prevent double warmup, add space, example: - cmi home :5:false
-  # Experimental: add GlyphHead to the warmup to show particle effect while command is on warmup period. Like
+  # 你可以为任何命令设置等待时间以防止马上生效
+  # tp:5:false 表示玩家执行/tp命令时需要等待5秒钟
+  # false是可选的，表示玩家在倒计时期间无法移动
+  # 如果你不想延迟空的/warp命令，但又想延迟/warp xxx之类带后续的命令，则只需要在后面加上空格，如：'warp :5:false'
+  # 请使用完整的命令而不是别名
+  # 管理员可以使用cmi.command.[comandName].warmupbypass权限节点来绕过此设置
+  # 注意：cmi home命令需要以特殊的方式处理，防止出现两次倒计时，请在后面添加空格，如- cmi home :5:false
+  # 实验：可以将GlyphHead添加到延迟命令中可以在倒计时期间出现粒子效果，如：
   # - cmi warp :3:false:GlyphHead
   Enabled: false
   InformOnNoMove: true
@@ -1513,37 +1562,40 @@ WarmUps:
   - cmi back:3:true
   - cmi warp :3:false
   - cmi home :3:false
+# 监狱
 Jail:
-  # Defines in milliseconds how often to check if player leaves jail area
-  # Bigger numbers can help slightly lower server load
+  # 检查玩家是否离开监狱的频率（毫秒）
+  # 更大的数字能稍微减少服务器的负载
   CheckInterval: 500
-  # Defines default jail time when time is not povided with command
+  # 默认的监禁时间，当没有指定时间时使用这个
   DefaultTime: 300
-  # Chat range in blocks while player is in jail
-  # Set to 0 to allow talking
-  # set to -1 to prevent talking in general while jailed
+  # 玩家入狱时的聊天范围
+  # 设置为0允许说话
+  # 设置为-1禁止说话
   ChatRange: 20
-  # When set to true jail time will decreese while player is offline
-  # When set to false jail time will only be counted while player is online
+  # 玩家离线时的时间是否算入入狱时间
+  # 设置为false时，只有当玩家在线才会积累入狱时间
   CountWhileOffline: false
-  # When set to true jail time will not decreese if player gets into afk mode while being jailed
-  # When set to false, time will pass normally
+  # 设置为true时，afk状态下不会计算入狱时间
+  # 设置为false时，时间会正常计算
   NoAfk: false
-  # Do you want to prevent players damage while he is in jail
+  # 是否阻止玩家入狱时受到伤害
   PreventDamage: true
+  # 入狱时命令白名单
   WhiteListedCmds:
   - cmi msg
   - cmi reply
+# 扫描
 scan:
-  # Tps cap from which to start adjusting scan speed
+  # Tps上限，从该上限开始调整扫描速度
   SoftCap: 19.0
-  # Staring speed when scanning. Range from 1 to 30
+  # 扫描时的起始速度。 范围从1到30
   DefaultSpeed: 15
-  # When this set to true, when using scan feature and not providing range, whole map will be scanned
+  # 设为true时，使用扫描功能但不提供范围时，将扫描整个地图
   GlobalRangeByDefault: false
-  # Range in chunks. 2 is 25 chunks, 1 is 9 and 0 is only chunk you are standing in
+  # 范围以区块为单位。 2是25个区块，1是9个，0是您所站在的区块
   DefaultRange: 2
-  # When this set to true, all found items in containers will be removed automatically durring scan. Ex: /scan id 7 purge
+  # 设置为true时，则在扫描过程中自动删除容器中找到的所有物品。如：/scan id 7 purge
   EnablePurge: false
 search:
   # When this set to true, all found items in inventories will be deleted durring search. Ex: /cmi search id 7 purge

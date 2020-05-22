@@ -1,0 +1,97 @@
+# 玩家需要拥有对应的权限节点才能使用特定的工具包: cmi.kit.[kitName]
+# cmi.kit.newbie表示允许使用newbie工具包
+# 可能用到的自定义变量: {USERNAME} {DISPLAYNAME} {WORLDNAME} {KITNAME} {RANDOMPLAYER}
+# 使用/cmi kiteditor在游戏中编辑以避免格式问题
+新手礼包:
+  Description:
+  - '&e会为您提供一些物有所值的东西'
+  - '&e每X分钟可以使用一次'
+  CommandName: Newbie
+  Enabled: true
+  DropOnGround: true
+  ShowDespiteWeight: false
+  Delay: 36000
+  MaxUsages: -1
+  MoneyCost: 100.0
+  ExpCost: 30
+  Commands:
+  - msg &e你获得了一个&6{KITNAME}&e！
+  Conditions:
+  Group: default
+  Items:
+    '1':
+      v: 1976
+      type: CLOCK
+      meta:
+        ==: ItemMeta
+        meta-type: UNSPECIFIC
+        display-name: §c菜单
+        lore:
+        - §7打开菜单
+    '2':
+      v: 1976
+      type: STONE_AXE
+    '3':
+      v: 1976
+      type: STONE_HOE
+    '4':
+      v: 1976
+      type: STONE_SHOVEL
+    '5':
+      v: 1976
+      type: STONE_PICKAXE
+    '6':
+      v: 1976
+      type: STONE_SWORD
+Advanced:
+  CommandName: Advanced
+  Enabled: true
+  DropOnGround: true
+  ShowDespiteWeight: false
+  Delay: 36000
+  MaxUsages: -1
+  Items:
+    '1':
+      v: 1976
+      type: STONE
+Ad2:
+  CommandName: Ad
+  Weight: 2
+  Enabled: true
+  DropOnGround: true
+  ShowDespiteWeight: false
+  Delay: 36060
+  MaxUsages: -1
+  Group: resources
+  Items:
+    '1':
+      v: 1976
+      type: OAK_PLANKS
+      amount: 10
+Ad1:
+  CommandName: Ad
+  Weight: 1
+  Enabled: true
+  DropOnGround: true
+  ShowDespiteWeight: false
+  Delay: 36000
+  MaxUsages: -1
+  Group: resources
+  Items:
+    '1':
+      v: 1976
+      type: STONE
+      amount: 10
+Ad3:
+  CommandName: Ad3
+  Enabled: true
+  DropOnGround: true
+  ShowDespiteWeight: false
+  Delay: 36001
+  MaxUsages: -1
+  Group: resources
+  Items:
+    '1':
+      v: 1976
+      type: DIRT
+      amount: 10
