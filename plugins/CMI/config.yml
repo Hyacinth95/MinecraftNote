@@ -1598,131 +1598,134 @@ scan:
   # 设置为true时，则在扫描过程中自动删除容器中找到的所有物品。如：/scan id 7 purge
   EnablePurge: false
 search:
-  # When this set to true, all found items in inventories will be deleted durring search. Ex: /cmi search id 7 purge
+  # 当设置为true，会在搜索过程中删除容器里找打哦的物品。例如：/cmi search id 7 purge
   EnablePurge: false
 lfix:
-  # Tps cap from which to start adjusting light fix speed
+  # 从多少tps开始调整区块修复速度
   SoftCap: 19.0
-  # Staring speed when fixing light. Range from 1 to 100
+  # 区块修复的速度。从1到100
   DefaultSpeed: 15
-# Removeuser command will use same configurations when removing player data files or moving them to new place
+# 当移除玩家数据文件或移动到新地方时Removeuser命令将使用相同的配置
 purge:
-  # Cleans files on server startup
+  # 服务器启动时清理文件
   CleanOnStart: false
-  # How long player should be offline for his data to be moved
+  # 玩家多少天不上线则移动他的数据
   OfflineDays: 90
   PlayerData:
-    # Do you want to enable player data file cleaning
+    # 开启玩家数据清理
     Enabled: true
-    # Source folder to take files from
+    # 玩家数据文件夹
     SourceFolder: world\playerdata
-    # When this is false, data files will be moved to backup folder. When its true files will be deleted
+    # 设置为false则移动到备份文件夹，设置为true则直接删除
     DeleteFiles: false
-    # Target folder to put files into if DeleteFiles set to false
+    # 玩家数据备份目录
     DestinationFolder: world\playerdata_backup
   PlayerStats:
-    # Do you want to enable player stats file cleaning
+    # 开启玩家stats文件清理
     Enabled: true
-    # Source folder to take files from
+    # 玩家stats文件夹
     SourceFolder: world\stats
-    # When this is false, data files will be moved to backup folder. When its true files will be deleted
+    # 设置为false则移动到备份文件夹，设置为true则直接删除
     DeleteFiles: false
-    # Target folder to put files into if DeleteFiles set to false
+    # 玩家stats备份目录
     DestinationFolder: world\stats_backup
   PlayerAdvancements:
-    # Do you want to enable player Advancements file cleaning
+    # 开启玩家Advancements文件清理
     Enabled: true
-    # Source folder to take files from
+    # 玩家Advancements文件目录
     SourceFolder: world\Advancements
-    # When this is false, data files will be moved to backup folder. When its true files will be deleted
+    # 设置为false则移动到备份文件夹，设置为true则直接删除
     DeleteFiles: false
-    # Target folder to put files into if DeleteFiles set to false
+    # 玩家Advancements备份目录
     DestinationFolder: world\Advancements_backup
   Essentials:
-    # Do you want to enable essentials playerdata file cleaning
+    # 开启essentials玩家数据文件清理
     Enabled: false
-    # Source folder to take files from
+    # ess的玩家数据文件夹
     SourceFolder: plugins\Essentials\userdata
-    # When this is false, data files will be moved to backup folder. When its true files will be deleted
+    # 设置为false则移动到备份文件夹，设置为true则直接删除
     DeleteFiles: false
-    # Target folder to put files into if DeleteFiles set to false
+    # ess的玩家数据备份目录
     DestinationFolder: plugins\Essentials\userdata_backup
   LWC:
-    # Do you want to enable lwc protection cleaning
+    # 是否启用LWC保护清理
     Enabled: false
 Selection:
-  # Tool id to use for selection actions
+  # 用于选区操作的工具（木铲）
   Tool: wooden_shovel
 Time:
-  # Defines preset time
+  # 预设时间
   Day: '12:00'
   Night: '24:00'
   Morning: 06:00
   Dusk: '18:00'
   AutoTime:
-    # Time in seconds time in game will be adjusted to match real
-    # Keep it at arround one minute
+    # 游戏中的时间（以秒为单位）将被调整为与真实时间匹配
+    # 保持一分钟左右
     Interval: 60
-    # Enables by default smooth sun transition to new time
-    # You can always override this setting with -smooth variable in time command
+    # 默认情况下启用太阳移动过渡到新时间
+    # 您始终可以在time命令中使用-smooth变量覆盖此设置
     Smooth: true
-    # Speed of smooth transition
-    # 100 will mean that sun moves 100 times faster than usual until it reaches target time
+    # 平稳过渡的速度
+    # 100表示太阳到达目标时间之前的移动速度比平常快100倍
     SmoothSpeed: 100
-    # Worlds effected by autotime adjustment
+    # 受自动时间调整影响的世界
     Worlds:
     - ''
-  # Allows you to change vanilla time speed to your own liking and needs
+  # 根据自己的喜好与需求改变原版时间的速度
   TimeSpeed:
-    # Time is defined in seconds. Vanilla 24 hour ingame duration is 1200 seconds of real time
+    # 时间以秒为单位。原版游戏中的24小时为真实世界时间的1200秒
     world:
       Enabled: false
-      # Default value: 600 Starts from tick: 0 Ends at tick: 12000
+      # 白天默认值：600 开始tick: 0 结束tick: 12000
       day: 600
-      # Default value: 90 Starts from tick: 12000 Ends at tick: 13800
+      # 日落默认值: 90 开始tick: 12000 结束tick: 13800
       sunset: 90
-      # Default value: 420 Starts from tick: 13800 Ends at tick: 22200
+      # 夜晚默认值: 420 开始tick: 13800 结束tick: 22200
       night: 420
-      # Default value: 90 Starts from tick: 22200 Ends at tick: 24000
+      # 日出默认值: 90 开始tick: 22200 结束tick: 24000
       sunrise: 90
-    # Time is defined in seconds. Vanilla 24 hour ingame duration is 1200 seconds of real time
+    # 时间以秒为单位。原版游戏中的24小时为真实世界时间的1200秒
     cs:
       Enabled: false
-      # Default value: 600 Starts from tick: 0 Ends at tick: 12000
+      # 白天默认值：600 开始tick: 0 结束tick: 12000
       day: 600
-      # Default value: 90 Starts from tick: 12000 Ends at tick: 13800
+      # 日落默认值: 90 开始tick: 12000 结束tick: 13800
       sunset: 90
-      # Default value: 420 Starts from tick: 13800 Ends at tick: 22200
+      # 夜晚默认值: 420 开始tick: 13800 结束tick: 22200
       night: 420
-      # Default value: 90 Starts from tick: 22200 Ends at tick: 24000
+      # 日出默认值: 90 开始tick: 22200 结束tick: 24000
       sunrise: 90
-    # Time is defined in seconds. Vanilla 24 hour ingame duration is 1200 seconds of real time
+    # 时间以秒为单位。原版游戏中的24小时为真实世界时间的1200秒
     spawn:
       Enabled: false
-      # Default value: 600 Starts from tick: 0 Ends at tick: 12000
+      # 白天默认值：600 开始tick: 0 结束tick: 12000
       day: 600
-      # Default value: 90 Starts from tick: 12000 Ends at tick: 13800
+      # 日落默认值: 90 开始tick: 12000 结束tick: 13800
       sunset: 90
-      # Default value: 420 Starts from tick: 13800 Ends at tick: 22200
+      # 夜晚默认值: 420 开始tick: 13800 结束tick: 22200
       night: 420
-      # Default value: 90 Starts from tick: 22200 Ends at tick: 24000
+      # 日出默认值: 90 开始tick: 22200 结束tick: 24000
       sunrise: 90
+# 随机传送
 RandomTeleportation:
-  # If this set to true we will generate random teleport default settings for all detected worlds
-  # Setting to false will not longer generate world setups, but you can add them manually if needed
+  # 设置为true则所有检测到的世界都使用默认的随机传送设置
+  # 设置为false则不再生成世界设置，但是可以根据需要手动添加
   AutoGenerateWorlds: true
   Worlds:
-    # World name to use this feature. Add annother one with appropriate name to enable random teleportation
+    # 随机传送设置的世界名
     world:
       Enabled: true
-      # Max coordinate to teleport, setting to 1000, player can be teleported between -1000 and 1000 coordinates
+      # 传送的最大坐标值，玩家可以传送到-1000到1000之间
       MaxRange: 1000
-      # If maxcord set to 1000 and mincord to 500, then player can be teleported between -1000 to -500 and 1000 to 500 coordinates
+      # 传送的最小坐标值，如果最大传送值为1000，则玩家可以传送到-1000至-500和1000到500之间
       MinRange: 500
       CenterX: 0
       CenterZ: 0
       Circle: false
+      # 忽略水
       IgnoreWater: true
+      # 忽略岩浆
       IgnoreLava: true
       minY: 0
       maxY: 256
@@ -1770,19 +1773,21 @@ RandomTeleportation:
       IgnoreLava: true
       minY: 0
       maxY: 256
-  # How long force player to wait before using command again.
+  # 再次传送的冷却时间
   Cooldown: 5
-  # How many times to try find correct location for teleportation.
-  # Keep it at low number, as player always can try again after delay
+  # 再次寻找正确传送位置的时间
+  # 保持较小的值，因为玩家总是可以在延迟后重试
   MaxTries: 20
-  # List of biomes to exclude from random teleportation
+  # 从随机传送中排除的生物群系列表
   ExcludedBiomes:
   - Ocean
   - Deep ocean
+# 附魔
 Enchanting:
+  # 附魔限制
   enchantLimits:
-    # By disabling this, no limitation to enchanting will be applied
-    # This only applies for enchant command not for natural enchanting
+    # 禁用则不会对任何附魔产生限制
+    # 只适用于enchant命令，不适用于自然附魔
     Enabled: true
     MaxLevel:
       protection_fire: 4
@@ -1822,45 +1827,46 @@ Enchanting:
       protection_fall: 4
       arrow_damage: 5
       arrow_infinite: 1
-  # When set to true, players will be required to have cmi.enchantments.[enchantname] permission node
+  # 设置为true，玩家只有当拥有cmi.enchantments.[enchantname]权限节点的时候才能使用
   RequireSpecificPermission: false
-  # When set to true, players will be required to have cmi.enchantments.[enchantname].[maxlevel] permission node to be abble to enchant item to defined max level
-  # Higest permission will be taken if player has more then one
-  # Keep in mind that this will not prevent player from enchanting item to lower levels then permission was set too
-  # And keep in mind that players without defined permission node will have access to level 1 enchants by default
+  # 设置为true时，要求玩家具有cmi.enchantments.[enchantname].[maxlevel]权限节点设置附魔对应的的最高等级
+  # 如果玩家有多个节点则取最高的一个生效
+  # 请记住，这不会阻止玩家将物品附魔至更低的等级，因此也需要设置权限
+  # 默认情况下，没有定义权限节点的玩家默认可以附魔到等级1
   PermissionLevelLimit: false
+# 掉落物清理
 Scavenge:
   ItemBreak:
-    # Defined percentage for item to break when salvaging it
-    # Value can be from 0 to 100, where 100 means that each time player extract enchant, item breaks
-    # This can allow player to extract enchantments without breaking item itself
-    # Set it to 100 if you want to always break item
-    # Keep in mind that broken item will go throw ingredient return process
-    # Attention! Items without enchants will have 100% break chance
+    # 提取附魔时物品破坏的几率
+    # 可以设置到0至100，100表示玩家每次提取附魔时物品都会毁坏
+    # 这可以让玩家在不破坏物品本身的情况下提取附魔
+    # 如果想让物品每次都破坏，请设置为100
+    # 请记住，破损的物品将进入配料退货流程
+    # 注意，没有附魔的物品将100%被破坏
     Base: 8.0
-    # Adds extra chance to break item depending on how many enchants item has
-    # In example having base chance of 8% and having this set to 2 while having item with 3 enchants will result into 8+(2*3)=14% chance to break item
+    # 根据物品附魔的数量增加额外的破坏几率
+    # 例：有8%的基础概率并且本属性为2，如果物品有3个附魔，则被破坏的几率为8+(2*3)=14%
     ForEachEnchant: 2.0
-    # Adds extra chance to break item depending on enchant level
-    # This will take into consideration enchantment max and current levels
-    # Having this set to 7.5 means, that enchantment at max level will have 7.5% extra chance to to break item
-    # But if you have sharpness 2 which has max level of 5, then only 3% fail chance will be added
+    # 根据物品的附魔等级增加额外的破坏几率
+    # 这将考虑到附魔的最高等级以及当前等级
+    # 设置为7.5表示最大附魔等级下有7.5的概率破坏物品
+    # 但是，如果你有一个附魔为锋II，它的最高等级为V，则只会增加3%的失败几率
     ForEachEnchantLevel: 2.0
-    # Defines in percentage a max chance to break item when extracting enchants
-    # This can limit chance to particular one in case it gets to 100% and it would always break
+    # 提取附魔时物品会被破坏的最大几率
+    # 可以将几率限制到一个范围，以免物品每次都被破坏
     MaxBreakChance: 100.0
-    # Value between 0 and 100 which defines extra fail chance when items doesnt have max durability
-    # Having this set to 50 will mean that item at 1 left durability will have fail chance increase by 50%
-    # Items which are not damaged will not experience any fail chance increase
+    # 物品没有满耐久的情况下增加的额外失败几率（0-100）
+    # 设置为50表示1耐久的物品失败几率会增加50%
+    # 未损坏的物品不会增加几率
     BreakDurabilityCheck: 50.0
-    # When set to true, items durability will be taken into consideration when extracting ingredients
-    # In example if item has 100 max durability and current is at 50, then only half of ingredients will be considered for extraction
-    # This doesnt mean that player gets 50% of them, it only means that half of posible ingredients will go throw IngredientReturn process
+    # 设置为true时，提取附魔时将考虑物品的耐久度
+    # 例如：如果某物品的最大耐久为100，而当前耐久为50，则提取时仅考虑一半成分
+    # 这不意味着玩家获得了其中的50%，只是表示一半的可能原料会扔到返回过程中
     DurabilityCheck: true
     IngredientReturn:
-      # Defines in percentage a max chance to return ingredients of item if it fails extraction process
-      # This will apply for each ingredient that item has
-      # Recipe to make that item should exist in database, or it will not return any ingredients
+      # 定义如果提取失败时返回原料的最大几率
+      # 这将适用于改物品具有的每种成分
+      # 如果该物品配方不在数据库内，则不会返回任何东西
       Base: 25.0
   EnchantExtractionFail:
     # Adds base chance to fail enchantment extraction
@@ -1903,11 +1909,11 @@ Scavenge:
   # When set to true, balck list becomes whitelist and will allow scavanging of items defined in a blacklist only
   BlackToWhiteList: false
 BungeeCord:
-  # You can disable bungeecord support entirely if you are exrperiencing issues with it
-  # When setting this to false some features like public messages over bungee cord, private messages over bungeecord, portals over bungecoord and other features will stop working
-  # Keep in mind that regular behavior of those features will remain intacted
+  # 如果遇到问题，可以禁用Bungeecord支持
+  # 如果设置为false，跨服聊天、跨服传送门和启动功能都会停止工作
+  # 但是常规功能不会受影响
   Enabled: true
-# If you want to disable particular sound entirely, set it to "" 
+# 如果不需要声音可以设置为""
 Sounds:
   Enabled: true
   WarpGuiOpen: entity_bat_takeoff:0.5:1
@@ -1919,8 +1925,8 @@ Sounds:
   MailNotification: entity_creeper_hurt:1:0.5
   TeleportUp: entity_enderman_teleport:2:1
   TeleportDown: entity_enderman_teleport:0.2:1
-# If you want to disable particular particle entirely, set it to "" 
-# More information how to set up this one can be found at http://www.zrips.net/cmi/extra/particles/
+# 如果不需要粒子可以设置为""
+# 有关如何设置这一功能的更多信息，请访问http://www.zrips.net/cmi/extra/particles/
 Particles:
   Enabled: true
   TotemHalo: circle;effect:reddust;c:255,255,10;twist;part:3;offset:0,2,0;pitch:90;radius:0.3;interval:2
@@ -1931,7 +1937,7 @@ Particles:
   SmallBoop: circle;effect:flying_glyph;yaw:[playerName];pitch:[playerName];r:0.1;part:3;rc:0.03;mr:0.3;twist
   TpUp: circle;c:200,50,210;twist;part:5;r:0.5;pitch:90;move:0,0.33,0;offset:0,-0.2,0
   TpDown: circle;c:150,50,10;part:5;r:0.5;pitch:90;move:0,-0.33,0;offset:0,2.2,0
-  # From custom1 to custom30 are free to use particle presets which can be utilized for things like command warmups
+  # 从custom1到custom30可以自由使用粒子预设，可以用于命令倒计时
   custom1: circle;effect:reddust;dur:5;pitchc:5;part:10;offset:0,1,0;radius:1;yawc:4
   custom2: circle;effect:reddust;dur:5;pitchc:5;part:10;offset:0,1,0;radius:1;yawc:4
   custom3: circle;effect:reddust;dur:5;pitchc:5;part:10;offset:0,1,0;radius:1;yawc:4
@@ -1962,9 +1968,9 @@ Particles:
   custom28: circle;effect:reddust;dur:5;pitchc:5;part:10;offset:0,1,0;radius:1;yawc:4
   custom29: circle;effect:reddust;dur:5;pitchc:5;part:10;offset:0,1,0;radius:1;yawc:4
   custom30: circle;effect:reddust;dur:5;pitchc:5;part:10;offset:0,1,0;radius:1;yawc:4
-# Defined animated particles will be shown on player teleportation on particular action from place and to destination
-# if you don't want it to be shown then set it to empty field
-# Animation names should be used from Particles section from above like TpUp
+# 玩家传送瞬间从起点到目的地的动画粒子
+# 如果不想显示则设为空字段
+# 动画名称来自上方的粒子部分，例如TpUp
 TeleportEffects:
   Unknown:
     From: ''
@@ -2051,6 +2057,6 @@ TeleportEffects:
     From: ''
     To: ''
 PotionEffects:
-  # When set to true player poition effect will expire even if player is offline
-  # Keep in mind that player potion effect durability will be updated on players login event so by checking players potions effect while he is offline can show incorrect state
+  # 设置为true时，即使玩家下线，效果也会失效
+  # 请记住，玩家药水效果的持久性将在玩家登录事件时更新，因此通过在玩家离线时检查玩家药水效果可以显示错误状态
   DeductWhileOffline: false
