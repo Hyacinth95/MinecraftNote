@@ -712,7 +712,7 @@ Alias:
   /sound: false
   #  
   # /cmi spawn $1-
-  /spawn: false
+  /spawn: true
   #  
   # /cmi spawner $1-
   /spawner: false
