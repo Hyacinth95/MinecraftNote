@@ -1868,45 +1868,45 @@ Scavenge:
       # 这将适用于改物品具有的每种成分
       # 如果该物品配方不在数据库内，则不会返回任何东西
       Base: 25.0
+  # 附魔提取失败
   EnchantExtractionFail:
-    # Adds base chance to fail enchantment extraction
-    # When enchantment fails, player will not get enchant book with appropriate enchantment
+    # 提取附魔的失败几率
+    # 当失败时，玩家不会获得对应的附魔书
     Base: 10.0
-    # Adds extra chance to fail enchantment extraction depending on enchantment level
-    # This will take into consideration enchantment max and current levels
-    # Having this set to 75 means, that enchantment at max level will have 75% chance to fail extraction process
-    # But if you have sharpness 2 which has max level of 5, then only 30% chance to fail will get applied
-    # While enchants like Aquaaffinity will always have max fail chance as you can only have it at level 1
+    # 根据附魔等级增加额外的失败几率
+    # 会考虑最大附魔等级和当前的附魔等级
+    # 设置为75表示最大等级的附魔有75%的几率会提取失败
+    # 但如果你的锋利II的最大等级为锋利V那么综合考虑，失败的几率将只有30%
+    # 类似于水下速倔这种只有一级的附魔，总会拥有最高失败几率
     ForEachLevel: 10.0
-    # Defines in percentage a max chance to fail enchantment extraction
-    # This can limit chance to particular one in case it gets to 100% and it would always fail
+    # 封顶失败几率
     MaxFailChance: 75.0
     LevelLower:
-      # Defines a chance lowering enchant level if it fails extraction
-      # This is secondary step when extraction fails and will only apply when it does
-      # If Enchant is at level 1 already, then player will not get enchanted book at all
-      # If you want to avoid lowering level of enchant when it fails extraction, set this to 100
-      # If you want to always lower level down when extracting enchantments, then set EnchantExtractionFail.Base to 100 and set this to 100
+      # 提取失败时，降低附魔等级的几率
+      # 提取失败时的第二步，仅在提取失败时才会应用
+      # 如果附魔等级已经为1级，玩家将不会得到附魔书
+      # 如果不想在提取失败的时候降低附魔等级，可以将这个值设置为100
+      # 如果想提取时始终降低等级，可以将EnchantExtractionFail.Base设置为100，并设置此值为100
       Base: 50.0
-      # Will adjust level lowering chance depending on enchant level to defined max amount at max level
-      # This will mean that higher levels will have higher chance to be lowered
+      # 根据附魔设置的最大等级来调整附魔等级降低的几率
+      # 这意味着更高的等级有更大的降低几率
       ForEachLevel: 5.0
-      # Will adjust level lower chance depending on enchant level to defined max amount at max level
+      # 封顶几率
       MaxChance: 75.0
   Cost:
-    # Defined base cost of extraction. Set to 0 if you want to make it free
+    # 确定提取附魔的价格，如果要免费则设置为0
     Base: 100.0
-    # Extra cost which depends on enchantment worth which can be defined with /cmi setenchantworth 
-    # This value is in percentage from worth value of that each enchantment and item
-    # So if you have base cost of 100, extra cost of 5% and you are trying to extract sharpness 5 which worth is 1000 and item sell hand worth is 100, then you will have to pay 155 for extraction process
+    # 取决于附魔价格的额外费用，可以用/cmi setenchantworth 定义
+    # 此值是每个物品和附魔的价值的百分比
+    # 因此，如果你基本价格为100，额外价格为5%，并且要提取的附魔锋利V的价值为100，而出售商品的价格为100，则提取过程将支付155
     Extra: 5.0
-  # List of materials to block from being scavenged
+  # 要清除的材料清单
   BlackList:
   - diamond
   - ironingot
   - goldingot
   - coal
-  # When set to true, balck list becomes whitelist and will allow scavanging of items defined in a blacklist only
+  # 设置为true时，黑名单当白名单使用
   BlackToWhiteList: false
 BungeeCord:
   # 如果遇到问题，可以禁用Bungeecord支持
