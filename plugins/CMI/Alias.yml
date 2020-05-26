@@ -238,7 +238,7 @@ Alias:
   /fspeed: false
   #  
   # /cmi gamerule $1-
-  /gamerule: true
+  /gamerule: false
   #  
   # /cmi getbook $1-
   /getbook: true
