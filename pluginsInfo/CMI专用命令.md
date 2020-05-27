@@ -26,11 +26,65 @@
 - 如果命令以<b>ifempty:[hand/offhand/quickbar/armor/inv/subinv]!</b>开头，如果玩家该类型的容器为空则执行命令。Subinv是具有27个空位，打开背包时除去快捷栏的上方3行位置。使用inv类型时，将检查玩家背包的每个物品。可以为quickbar/maininv/subinv类型定义额外的值，例如maininv-5将要求你的主背包内有5个空位，而subinv-10将要求子背包中有10个空位，而quickbar-3将要求快捷栏有3个空位。使用示例：ifempty:maininv-3?! 
 - 如果命令以<b>votes:[amount]!</b>开头，如果玩家有足够的票数，命令将会执行
 - 插入一行<b>delay! 5</b>将在5秒之后执行后续命令. 这允许你创建示例任务中那样的重启服务器倒计时
+
     ``` yml
     - cmi launch [playerName]
     - delay! 2
     - cmi launch [playerName]
     ```
+
 - [randomPlayer]占位符可用于获取没有<b>cmi.scheduler.exclude</b>权限节点的随机在线玩家名称。这可用于在特定的时间为随机玩家提供奖励。例如：<b>cmi give [randomPlayer] diamond %rand/1-5%</b>将会给一名在线的随机玩家1到5个钻石
 - 如果命令以<b>allPlayers!</b>开头，将在所有在线玩家上执行命令。[allPlayers]应该用于在需要的地方插入玩家名字。例如：<b>allPlayers! cmi heal [allPlayers]</b>将会治愈服务器在线的所有玩家
 - 支持<b>PlaceHolderAPI</b>变量
+
+## 附加
+
+- perm:[value][@][?][#]!
+- bperm:[value][@][?][#]!
+- moneycost:[value][?][#]!
+- expcost:[value][?][#]!
+- hasmoney:[value][@][?][#]!
+- hasitem:[value][@][?][#]!
+- item:[value][?][#]!
+- hasexp:[value][@][?][#]!
+- votes:[value][@][?][#]!
+- cooldown:[value][?][#]!
+- ifonline:[value][?][#]!
+- ifoffline:[value][?][#]!
+- ifempty:[value][?][#]!
+- click:[value][#]!
+- ifinworld:[value][@][?][#]!
+
+这些都是条件检查。表示如果玩家没有权限节点或足够的钱/经验则接下来的命令将不会执行。  
+例如：<b>perm:cmi.testperm! cmi heal [playerName]</b>
+
+- 如果你想提示玩家他没有此命令所需的权限节点或钱/经验可以在检查变量内使用<b>"?"</b>。例如<b>perm:cmi.testperm?! cmi heal [playerName]</b>，如果玩家没有<b>cmi.testperm</b>权限节点，他们会收到提示消息并且不会执行命令
+- 如果你想在玩家不满足需求的时候取消所有命令，则可以在检查变量中加入<b>"#"</b>，例如
+
+    ```
+    - moneycost:150#! cmi heal [playerName]
+    - cmi feed [playerName]
+    ```
+
+    在此示例中如果玩家账户中无法支付150块钱，则不会被治疗和喂饱
+- 如果要检查相反的条件，可以使用"@"。如<b>perm:cmi.testperm@! cmi heal [playerName]</b>，将会治疗<b>没有cmi.testprem</b>节点的人
+- 如果你想当玩家在指定的世界时才执行命令，请使用<b>ifinworld:[value][@][?][#]!</b>条件。仅当提供的世界名称与当前玩家世界匹配时，此命令才执行命令。如果在使用@的情况下，仅当玩家不在指定的世界中才会执行命令。
+- 附加条件可以用于检查相反条件，通知玩家，在需要的时候取消所有将执行的指令。完整的检查就像：<b>perm:cmi.testperm@?#! cmi heal [playerName]</b>
+
+<b>bperm:[value][@][?][#]!</b>会尝试绕过cmi的基础权限检查。例如：
+
+```
+bperm:cmi.someCustom! cmi heal
+```
+
+会允许玩家使用/cmi heal命令，即使该玩家实际上并没有命令所要求的<b>cmi.command.heal</b>权限节点。这可以用在如有限的物品使用之类的操作上，玩家可以在常规情况下执行一些他无法使用的命令，但是他只能在使用这些物品的时候才能执行它们。
+
+<b>ptarget:[name]!</b>是只能在控制台使用的特殊变量。当替换占位符或检查条件时，他将使用目标玩家。例如，使用如/givehomes这样的简化命令，原命令为
+
+```
+ptarget:$1! lp user $1 permission set cmi.command.sethome.%cmi_equationint_{cmi_user_maxperm_cmi.command.sethome_1}+1%
+```
+
+这样，你可以在控制台使用/givehomes Zrips执行命令，并通过这个占位符为Zrips添加新的权限节点。在这个例子中会增加1个家上限。
+
+<b>click:[value]!</b>这只适用于点击方块时的交互命令。有**4**个可选的值：<b>left, right, leftshift, rightshift</b>。指定当玩家执行指定点击操作时才执行命令。例如示例当中的:<b>click:leftshift!</b> 仅当玩家在潜行时使用鼠标左键点击才会执行命令。
