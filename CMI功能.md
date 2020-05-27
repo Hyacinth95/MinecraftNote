@@ -4,10 +4,22 @@
 1. **支票系统**，可以创建存有金钱的物品
 1. 先进的**监狱系统**
 1. 可点击的**全息图系统**和支持所有**PlaceHolderAPI**
-1. **模块化设置**，可以禁用不需要的功能，节省服务器资源  
-![1](http://www.zrips.net/wp-content/uploads/2019/02/2018-12-31_16-18-56.gif)![2](http://www.zrips.net/wp-content/uploads/2019/02/2018-03-27_17-07-48.gif)
+1. **模块化设置**，可以禁用不需要的功能，节省服务器资源
 1. 支持PlaceHolderAPI的**自更新牌子**
 1. **物品分解**系统
    1. /cmi scavange 打开分解GUI
-1. **动画粒子**创建系统  
-![blockchain111111111111](https://upload-images.jianshu.io/upload_images/6860761-fd2f51090a890873.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/550/format/webp)
+1. **动画粒子**创建系统
+1. 具有自定义粒子，自定义命令和Bungeecord支持的**虚空门**系统
+   1. /cmi portals (new/nearest) (portalName)
+1. 包含11种设置的**镜像仿制**
+   1. /cmi mirror (start/stop)
+1. 在GUI中**编辑盔甲架**
+   1. /cmi armorstand (last/near)
+1. 基于玩家信息，MCMMO，Jobs等高度集成的**自动排名系统**
+1. 使用**boss条**显示自定义消息
+1. **跨服发送私人或公共消息**
+1. **高级Toast类型消息**支持自定义消息或区域
+1. 创建要与插件或PlaceHolderAPI一起使用的**自定义占位符**
+1. 将盔甲变成任何想要的颜色甚至能自动变色
+1. 将命令附加在物品上，能制作有限用途的物品
+1. 

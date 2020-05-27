@@ -110,7 +110,7 @@ Optimizations:
   # 启用后，右键单击将在操作栏中看到蜂巢信息。
   ShowBeeHiveInformation: true
   # 创建电梯标志时设置标识符。 不区分大小写
-  ElevatorIndicator: '[CMIElevator]'
+  ElevatorIndicator: '[电梯]'
   # 定义电梯类型。 如果在第二行符号上使用此标记，则播放器将直接传送到其前面，而不是保持原始播放器的x和z坐标
   ElevatorStaticIndicator: '[*]'
   # 用于在诸如邮件，检查栏，信息页和类似位置的地方显示的日期格式
