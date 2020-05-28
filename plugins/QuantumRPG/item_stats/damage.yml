@@ -1,0 +1,86 @@
+physical:
+  priority: 100
+  name: 物理伤害
+  format: '&6⚔ %name%: &f%value%'
+  attached-damage-causes:
+  - ENTITY_ATTACK
+  on-hit-actions: {}
+  biome-damage-modifier:
+    PLAINS: 1.0
+  entity-type-modifier:
+    PIG: 1.0
+  mythic-mob-faction-modifier:
+    faction: 1.0
+
+magical:
+  priority: 10
+  name: 魔法伤害
+  format: '&d⚡ %name%: &f%value%'
+  attached-damage-causes:
+  - ENTITY_ATTACK
+  on-hit-actions: {}
+  biome-damage-modifier:
+    PLAINS: 1.0
+  entity-type-modifier:
+    PIG: 1.0
+  mythic-mob-faction-modifier:
+    faction: 1.0
+
+fire:
+  priority: 10
+  name: 火焰伤害
+  format: '&c☀ %name%: &f%value%'
+  attached-damage-causes:
+  - ENTITY_ATTACK
+  on-hit-actions: {}
+  biome-damage-modifier:
+    PLAINS: 1.0
+    NETHER: 1.25
+  entity-type-modifier:
+    PIG: 1.0
+  mythic-mob-faction-modifier:
+    faction: 1.0
+
+poison:
+  priority: 10
+  name: 毒伤
+  format: '&a☣ %name%: &f%value%'
+  attached-damage-causes:
+  - ENTITY_ATTACK
+  on-hit-actions: {}
+  biome-damage-modifier:
+    PLAINS: 1.0
+    SWAMPLAND: 1.25
+  entity-type-modifier:
+    PIG: 1.0
+  mythic-mob-faction-modifier:
+    faction: 1.0
+
+water:
+  priority: 10
+  name: 水系伤害
+  format: '&9⚓ %name%: &f%value%'
+  attached-damage-causes:
+  - ENTITY_ATTACK
+  on-hit-actions: {}
+  biome-damage-modifier:
+    PLAINS: 1.0
+    OCEAN: 1.25
+  entity-type-modifier:
+    PIG: 1.0
+  mythic-mob-faction-modifier:
+    faction: 1.0
+
+wind:
+  priority: 10
+  name: 风系伤害
+  format: '&7⚕ %name%: &f%value%'
+  attached-damage-causes:
+  - ENTITY_ATTACK
+  on-hit-actions: {}
+  biome-damage-modifier:
+    PLAINS: 1.0
+  entity-type-modifier:
+    PIG: 1.0
+  mythic-mob-faction-modifier:
+    faction: 1.0

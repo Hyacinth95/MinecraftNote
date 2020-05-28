@@ -1,0 +1,311 @@
+#该配置仅供参考!请勿用于服务器中!插件重载会自动删除注释!
+core:
+#语言文件设置
+  lang: cn
+#快捷命令设置（输入这些命令可以快速打开插件帮助信息用“,”号隔开）
+  command-aliases: quantumrpg,qrpg
+#插件前缀
+  prefix: QuantumRPG
+data:
+#自动存储队伍等玩家数据的时间(分钟)设置成0关闭
+  auto-save: 15
+#存储方式可选SQLite或者MySQL
+  storage:
+    type: MySQL
+    username: mccontrol
+    password: zyy6806
+    host: 127.0.0.1:3306
+    database: mcdb
+#是否自动清理长时间不上线玩家的数据
+  purge:
+#启用?
+    enabled: false
+#时间(天)
+    days: 60
+# 武器的品质系统
+# 品质可以帮助你排序物品和提供全局名字和lore格式
+# 正在计划关于品质的更多功能
+tiers:
+  # 品质标识符，必须唯一
+  default:
+    # 品质颜色
+    color: '&7'
+    # 品质名称，使用%TIER_COLOR%来插入颜色
+    # 所有与品质连接的物品都可以在名称和lore内使用他们的品质标识符
+    # - %TIER_COLOR% - 品质颜色
+    # - %TIER_NAME% - 品质名称 (如果包括颜色，则包括在内).
+    name: '%TIER_COLOR%垃圾'
+  cursed:
+    color: '&4'
+    name: '%TIER_COLOR%诅咒'
+  common:
+    color: '&r&f'
+    name: '%TIER_COLOR%普通'
+  rare:
+    color: '&a'
+    name: '%TIER_COLOR%优秀'
+  superior:
+    color: '&9'
+    name: '%TIER_COLOR%精良'
+  fabled:
+    color: '&e'
+    name: '%TIER_COLOR%史诗'
+  eternal:
+    color: '&6'
+    name: '%TIER_COLOR%传奇'
+  mythic:
+    color: '&5'
+    name: '%TIER_COLOR%神话'
+# 模块设置,在这里你可以随时禁用量子RPG的一切功能
+modules:
+  gems:
+    enabled: true
+    name: Gems
+  essences:
+    enabled: true
+    name: Essences
+  runes:
+    enabled: true
+    name: Runes
+  consumables:
+    enabled: true
+    name: Consumables
+  arrows:
+    enabled: true
+    name: Arrows
+  sets:
+    enabled: true
+    name: Sets
+  active_items:
+    enabled: true
+    name: Active Items
+  item_generator:
+    enabled: true
+    name: Item Generator
+  classes:
+    enabled: true
+    name: Classes
+  refine:
+    enabled: true
+    name: Refine
+  fortify:
+    enabled: true
+    name: Fortify
+  identify:
+    enabled: true
+    name: Identify
+  magic_dust:
+    enabled: true
+    name: Magic Dust
+  soulbound:
+    enabled: true
+    name: Soulbound
+  repair:
+    enabled: true
+    name: Repair
+  dismantle:
+    enabled: true
+    name: Dismantle
+  extractor:
+    enabled: true
+    name: Extractor
+  party:
+    enabled: true
+    name: Party
+  item_hints:
+    enabled: true
+    name: Item Hints
+  drops:
+    enabled: true
+    name: Drops
+  loot:
+    enabled: false
+    name: Loot
+  sell:
+    enabled: true
+    name: Sell
+  combat_log:
+    enabled: true
+    name: Combat Log
+# 自定义的物品组
+# 这些组可以用在Item Requirements, Item Generation等等
+item-sub-types:
+  # 组标识符，必须唯一
+  axe:
+    # 本地化的组名
+    name: 斧
+    # 该组包含的材料清单。如果需要，不同的组可以包含相同的材料。
+    # Bukkit材料清单：https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+    materials:
+    - WOODEN_AXE
+    - GOLDEN_AXE
+    - IRON_AXE
+    - DIAMOND_AXE
+    - STONE_AXE
+  sword:
+    name: 剑
+    materials:
+    - WOODEN_SWORD
+    - GOLDEN_SWORD
+    - IRON_SWORD
+    - DIAMOND_SWORD
+    - STONE_SWORD
+  shears:
+    name: 剪刀
+    materials:
+    - SHEARS
+  shovel:
+    name: 铲
+    materials:
+    - WOODEN_SHOVEL
+    - GOLDEN_SHOVEL
+    - IRON_SHOVEL
+    - DIAMOND_SHOVEL
+    - STONE_SHOVEL
+  pickaxe:
+    name: 镐
+    materials:
+    - WOODEN_PICKAXE
+    - GOLDEN_PICKAXE
+    - IRON_PICKAXE
+    - DIAMOND_PICKAXE
+    - STONE_PICKAXE
+  hoe:
+    name: 锄
+    materials:
+    - WOODEN_HOE
+    - GOLDEN_HOE
+    - IRON_HOE
+    - DIAMOND_HOE
+    - STONE_HOE
+  helmet:
+    name: 头盔
+    materials:
+    - GOLDEN_HELMET
+    - IRON_HELMET
+    - DIAMOND_HELMET
+    - CHAINMAIL_HELMET
+    - LEATHER_HELMET
+    - TURTLE_HELMET
+  chestplate:
+    name: 护甲
+    materials:
+    - GOLDEN_CHESTPLATE
+    - IRON_CHESTPLATE
+    - DIAMOND_CHESTPLATE
+    - CHAINMAIL_CHESTPLATE
+    - LEATHER_CHESTPLATE
+  leggings:
+    name: 护膝
+    materials:
+    - GOLDEN_LEGGINGS
+    - IRON_LEGGINGS
+    - DIAMOND_LEGGINGS
+    - CHAINMAIL_LEGGINGS
+    - LEATHER_LEGGINGS
+  boots:
+    name: 靴子
+    materials:
+    - GOLDEN_BOOTS
+    - IRON_BOOTS
+    - DIAMOND_BOOTS
+    - CHAINMAIL_BOOTS
+    - LEATHER_BOOTS
+  elytra:
+    name: 鞘翅
+    materials:
+    - ELYTRA
+  shield:
+    name: 盾
+    materials:
+    - SHIELD
+  bow:
+    name: 弓
+    materials:
+    - BOW
+  fishing_rod:
+    name: 鱼竿
+    materials:
+    - FISHING_ROD
+  trident:
+    name: 三叉戟
+    materials:
+    - TRIDENT
+
+# 全局物品组。不要尝试创建更多内容。
+# 这些组用于帮助插件确定物品类型
+item-groups:
+  # 此处列出的物品将被定义为武器，并将具有所有武器效果。
+  # 此处未列出具有武器属性（例如伤害）的物品将不起作用。
+  WEAPON:
+    # 本地化的组名
+    name: 武器
+    # 该组包含的材料清单。不要在不同的组中包含相同的材料。
+    # Bukkit的材料清单: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+    materials:
+    - WOODEN_SWORD
+    - WOODEN_AXE
+    - STONE_SWORD
+    - STONE_AXE
+    - GOLDEN_SWORD
+    - GOLDEN_AXE
+    - IRON_SWORD
+    - IRON_AXE
+    - DIAMOND_SWORD
+    - DIAMOND_AXE
+    - SHEARS
+    - FISHING_ROD
+    - BOW
+    - CROSSBOW
+    - TRIDENT
+  TOOL:
+    name: 工具
+    materials:
+    - WOODEN_HOE
+    - WOODEN_AXE
+    - WOODEN_SHOVEL
+    - WOODEN_PICKAXE
+    - STONE_HOE
+    - STONE_AXE
+    - STONE_SHOVEL
+    - STONE_PICKAXE
+    - GOLDEN_HOE
+    - GOLDEN_AXE
+    - GOLDEN_SHOVEL
+    - GOLDEN_PICKAXE
+    - IRON_HOE
+    - IRON_AXE
+    - IRON_SHOVEL
+    - IRON_PICKAXE
+    - DIAMOND_HOE
+    - DIAMOND_AXE
+    - DIAMOND_SHOVEL
+    - DIAMOND_PICKAXE
+    - SHEARS
+    - FISHING_ROD
+  ARMOR:
+    name: 装备
+    materials:
+    - LEATHER_HELMET
+    - LEATHER_CHESTPLATE
+    - LEATHER_LEGGINGS
+    - LEATHER_BOOTS
+    - GOLDEN_HELMET
+    - GOLDEN_CHESTPLATE
+    - GOLDEN_LEGGINGS
+    - GOLDEN_BOOTS
+    - CHAINMAIL_HELMET
+    - CHAINMAIL_CHESTPLATE
+    - CHAINMAIL_LEGGINGS
+    - CHAINMAIL_BOOTS
+    - IRON_HELMET
+    - IRON_CHESTPLATE
+    - IRON_LEGGINGS
+    - IRON_BOOTS
+    - DIAMOND_HELMET
+    - DIAMOND_CHESTPLATE
+    - DIAMOND_LEGGINGS
+    - DIAMOND_BOOTS
+    - SHIELD
+    - ELYTRA
+    - TURTLE_HELMET

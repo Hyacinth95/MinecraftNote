@@ -1,0 +1,44 @@
+ARROW:
+  enabled: true
+  name: 箭矢
+  format: '&7➶ 弹药类型: &f%name%'
+
+SNOWBALL:
+  enabled: true
+  name: 雪球
+  format: '&7➶ 弹药类型: &f%name%'
+
+EGG:
+  enabled: true
+  name: 鸡蛋
+  format: '&7➶ 弹药类型: &f%name%'
+
+FIREBALL:
+  enabled: true
+  name: 火球
+  format: '&7➶ 弹药类型: &f%name%'
+
+WITHER_SKULL:
+  enabled: true
+  name: 凋灵之首
+  format: '&7➶ 弹药类型: &f%name%'
+
+SHULKER_BULLET:
+  enabled: true
+  name: 潜影飞弹
+  format: '&7➶ 弹药类型: &f%name%'
+
+LLAMA_SPIT:
+  enabled: true
+  name: 羊驼唾沫
+  format: '&7➶ 弹药类型: &f%name%'
+
+ENDER_PEARL:
+  enabled: true
+  name: 末影珍珠
+  format: '&7➶ 弹药类型: &f%name%'
+
+EXP_POTION:
+  enabled: true
+  name: 经验瓶
+  format: '&7➶ 弹药类型: &f%name%'

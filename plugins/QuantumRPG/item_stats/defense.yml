@@ -1,0 +1,47 @@
+physical:
+  priority: 100
+  name: 物理防御
+  format: '&6▸ %name%: &f%value%'
+  block-damage-types:
+  - physical
+  protection-factor: 0.25
+
+magical:
+  priority: 10
+  name: 魔法防御
+  format: '&d▸ %name%: &f%value%'
+  block-damage-types:
+  - magical
+  protection-factor: 0.25
+
+fire:
+  priority: 10
+  name: 火焰防御
+  format: '&c▸ %name%: &f%value%'
+  block-damage-types:
+  - fire
+  protection-factor: 0.25
+
+poison:
+  priority: 10
+  name: 毒性防御
+  format: '&a▸ %name%: &f%value%'
+  block-damage-types:
+  - poison
+  protection-factor: 0.25
+
+water:
+  priority: 10
+  name: 水防御
+  format: '&9▸ %name%: &f%value%'
+  block-damage-types:
+  - water
+  protection-factor: 0.25
+
+wind:
+  priority: 10
+  name: 风防御
+  format: '&7▸ %name%: &f%value%'
+  block-damage-types:
+  - wind
+  protection-factor: 0.25

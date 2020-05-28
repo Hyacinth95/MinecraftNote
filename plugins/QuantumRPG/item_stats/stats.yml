@@ -1,0 +1,165 @@
+DIRECT_DAMAGE:
+  enabled: true
+  name: 真实伤害
+  format: '&f▸ %name%: &f%value%'
+  capacity: 100.0
+
+AOE_DAMAGE:
+  enabled: true
+  name: 群体伤害
+  format: '&3▸ %name%: &f%value%'
+  capacity: -1
+
+PVP_DAMAGE:
+  enabled: true
+  name: PvP伤害
+  format: '&b▸ %name%: &f%value%'
+  capacity: 200.0
+
+PVE_DAMAGE:
+  enabled: true
+  name: PvE伤害
+  format: '&b▸ %name%: &f%value%'
+  capacity: 200.0
+
+DODGE_RATE:
+  enabled: true
+  name: 闪避率
+  format: '&6▸ %name%: &f%value%'
+  capacity: 45.0
+
+ACCURACY_RATE:
+  enabled: true
+  name: 命中率
+  format: '&6▸ %name%: &f%value%'
+  capacity: 30.0
+
+BLOCK_RATE:
+  enabled: true
+  name: 格挡率
+  format: '&6▸ %name%: &f%value%'
+  capacity: 100.0
+
+BLOCK_DAMAGE:
+  enabled: true
+  name: 格挡倍率
+  format: '&6▸ %name%: &f%value%'
+  capacity: 100.0
+
+CRITICAL_RATE:
+  enabled: true
+  name: 暴击率
+  format: '&a▸ %name%: &f%value%'
+  capacity: 100.0
+
+CRITICAL_DAMAGE:
+  enabled: true
+  name: 暴击倍率
+  format: '&a▸ %name%: &f%value%'
+  capacity: 3.5
+
+PVP_DEFENSE:
+  enabled: true
+  name: PvP防御
+  format: '&b▸ %name%: &f%value%'
+  capacity: 100.0
+
+PVE_DEFENSE:
+  enabled: true
+  name: PvE防御
+  format: '&b▸ %name%: &f%value%'
+  capacity: 100.0
+
+LOOT_RATE:
+  enabled: true
+  name: 幸运
+  format: '&e▸ %name%: &f%value%'
+  capacity: 250.0
+
+MOVEMENT_SPEED:
+  enabled: true
+  name: 移动速度
+  format: '&e▸ %name%: &f%value%'
+  capacity: 70.0
+
+DURABILITY:
+  enabled: true
+  name: 耐久值
+  format: '&7▸ %name%: &f%value%'
+  capacity: -1
+
+PENETRATION:
+  enabled: true
+  name: 破甲
+  format: '&c▸ %name%: &f%value%'
+  capacity: 60.0
+
+VAMPIRISM:
+  enabled: true
+  name: 吸血
+  format: '&c▸ %name%: &f%value%'
+  capacity: 35.0
+
+BURN_RATE:
+  enabled: true
+  name: 燃烧
+  format: '&c▸ %name%: &f%value%'
+  capacity: 100.0
+
+ATTACK_SPEED:
+  enabled: true
+  name: 攻速
+  format: '&e▸ %name%: &f%value%'
+  capacity: -1
+
+MAX_HEALTH:
+  enabled: true
+  name: 生命值
+  format: '&c▸ %name%: &f%value%'
+  capacity: 20
+
+SALE_PRICE:
+  enabled: true
+  name: 价值
+  format: '&d▸ %name%: &f%value%'
+  capacity: -1
+
+BLEED_RATE:
+  enabled: true
+  name: 流血
+  format: '&c▸ %name%: &f%value%'
+  capacity: 75.0
+  settings:
+    damage: '%damage% * 0.5'
+    of-max-health: false
+    duration: 10.0
+
+DISARM_RATE:
+  enabled: true
+  name: 缴械
+  format: '&c▸ %name%: &f%value%'
+  capacity: 25.0
+
+RANGE:
+  enabled: true
+  name: 范围
+  format: '&6▸ %name%: &f%value%'
+  capacity: 7.0
+
+THORNMAIL:
+  enabled: true
+  name: 反伤
+  format: '&c▸ %name%: &f%value%'
+  capacity: 35.0
+
+HEALTH_REGEN:
+  enabled: true
+  name: 回血
+  format: '&c▸ %name%: &f%value%'
+  capacity: -1.0
+
+MANA_REGEN:
+  enabled: true
+  name: 回蓝
+  format: '&9▸ %name%: &f%value%'
+  capacity: -1.0

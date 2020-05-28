@@ -1,0 +1,206 @@
+#+------------------------------------------------------+
+#|         Quantum RPG引擎配置 (Beta)                   |
+#|                                                      |
+#| 此文件包含您可能要调整的内部插件功能和功能的选项。   |
+#|                                                      |
+#| 如果您认为自己在此处有问题，                         |
+#| 只需删除此文件即可生成默认文件。                     |
+#|                                                      |
+#+------------------------------------------------------+
+
+# 包处理程序
+# 根据游戏数据包解锁一些独特的插件功能。
+packets:
+  # 启用/禁用数据包处理。
+  enabled: true
+  modules:
+    # 启用后,在ItemHints模块下设置的发光的物品,其物品的颜色将根据物品的名称颜色来改变
+    glow-color: true
+    # 启用后会减少心形粒子的数量,对拥有大量高伤害数值的武器的服务器特别有用,强烈建议你开启该功能,没坏处
+    reduce-damage-particles: true
+
+#Hook挂钩设置
+compatibility:
+#玩家等级挂钩插件
+  player-level-plugin: 'QuantumRPG'
+#玩家职业挂钩插件
+  player-class-plugin: 'QuantumRPG'
+#怪物等级hook插件
+  mob-level-plugin: 'MythicMobs'
+
+# 性能设置。
+# 调整这些值可能会导致性能提高甚至更糟。
+# 同样，不加思索地调整一些值会使游戏性变差。
+performance:
+  # Allowed values: 0,1,2
+  evaluator-engine: 1
+  entity-stats:
+    # 对实体 AttributeModifiers 的更新频率(20tick=1秒为单位).
+    # 为套装、宝石。职业和其他模块的属性更新生效频率
+    # 设置为0则为手动更新,绝对不要,容易出错
+    # 设置为过低值会影响性能
+    # 默认为50tick(2.5秒)
+    # 推荐值20tick或更高(1秒+)
+    bonus-update-interval: 50
+
+# 物品属性设置
+attributes:
+  durability:
+    # 有耐久的物品当耐久为0时物品是否消失就像原版那样,设置成false则为不消失但无法使用,直到你修复它
+    break-items-on-zero: true
+    effective-for:
+      # 启用后，所有怪物的装备都会受到耐久度的影响
+      mobs: true
+      # 启用后释放SKILLAPI技能会降低手中物品耐久
+      skill-api-skills: true
+  # 启用后,怪物身上的装备可受QRPG属性的控制,使玩家的装备穿在怪物身上也生效
+  effective-for-mobs: true
+  # 启用后，副手物品的属性也会生效
+  effective-in-offhand: false
+  # 启用后允许玩家手持不满足使用需求的物品
+  # 即使启用了,他们拿在手里的物品打出的属性也不会生效
+  allow-hold-items-you-cant-use: false
+
+combat:
+  # 盾牌设置
+  shield:
+    block:
+      # 设置添加在盾牌BLOCK_RATE属性的最大值 
+      block-rate-bonus: 100.0
+      # 设置添加在盾牌BLOCK_DAMAGE属性的最大值
+      block-damage-bonus: 35.0
+      # 触发格挡后下次使用的冷却时间(秒)
+      cooldown: 2
+  # 禁用原版的横扫攻击,设置为true,在没有AOE_DAMAGE属性的情况下触发横扫只会攻击一个敌人
+  disable-vanilla-sweep-attack: true
+  # 启用后,玩家的生命栏锁定为10颗心,以防止过高生命值阻挡屏幕
+  # 该设置不会改变玩家生命值,只是压缩了血条
+  # 注意:有时也会出现假死错误
+  compress-player-health-bar: false
+  # 是否允许钓鱼竿造成伤害
+  fishing-hook-do-damage: true
+  # 启用后,使用弓近战,物品属性也会生效
+  bows-do-full-melee-damage: false
+  # 攻击冷却参数修正,如果玩家使用武器还在冷却状态(鼠标指针下的剑图标)中,
+  # 他再次攻击造成的伤害比,如果调整成0就是不造成伤害,这里推荐大部分RPG服务器修改成0.5比较好
+  # 1.0 = 100%, no changes.
+  # 0 = 0%, no damage for attack cooldown.
+  damage-modifier-for-cooldown: 1.0
+  # 设置鼠标指针与指示的目标方块的最大距离,此设置是应用于下面攻击/防御类型中的自定义on-hit-actions这个选项,
+  # 具体的自定义方法已在WIKI中讲解
+  max-get-target-distance: 30.0
+
+lore:
+# 其他格式设置
+  chars:
+    # 百分比属性
+    percent: '%'
+    # 负值
+    negative: '&c'
+    # 正值
+    positive: '+'
+    # 倍数符号
+    multiplier: 'x'
+  stats:
+    style:
+      # 分割线设置
+      separator:
+        value: '&7/'
+        color: '&f'
+      durability:
+        # 耐久度格式组ID,请看下面的 'format-list'.
+        # 也可以在那里面创建自己的自定义格式
+        format: 'default'
+        # 不可破坏属性格式.
+        unbreakable: '&f不可破坏'
+        # 变量:
+        # %current% - 当前耐久度
+        # %max% - 最大耐久度上限
+        # %percent% - 让耐久度以百分比来表示
+        format-list:
+          default:
+            '0': '&f%current%&7/&f%max%'
+          bar:
+            '100': '&a◼◼◼◼◼◼◼◼◼◼'
+            '90': '&a◼◼◼◼◼◼◼◼◼&7◼'
+            '80': '&2◼◼◼◼◼◼◼◼&7◼◼'
+            '70': '&2◼◼◼◼◼◼◼&7◼◼◼'
+            '60': '&e◼◼◼◼◼◼&7◼◼◼◼'
+            '50': '&e◼◼◼◼◼&7◼◼◼◼◼'
+            '40': '&6◼◼◼◼&7◼◼◼◼◼◼'
+            '30': '&6◼◼◼&7◼◼◼◼◼◼◼'
+            '20': '&c◼◼&7◼◼◼◼◼◼◼◼'
+            '1': '&4◼&7◼◼◼◼◼◼◼◼◼'
+            '0': '&7◼◼◼◼◼◼◼◼◼◼'
+          text:
+            '100': '&a感觉良好 &7(%percent%%)'
+            '70': '&2嗯还不错 &7(%percent%%)'
+            '50': '&e有点不太行 &7(%percent%%)'
+            '25': '&6得修一下 &7(%percent%%)'
+            '10': '&c别用了要烂了 &7(%percent%%)'
+            '0': '&4我没了 &7(%percent%%)'
+      # 伤害
+      damage:
+        format:
+          single: '&f%value%'
+          double: '&f%min% &7- &f%max%'
+      charges:
+        enabled: true
+        name: 'Charges'
+        format:
+          main: '&7%name%: &f%value%'
+          value:
+            default: '&f%min%&7/&f%max%'
+            unlimited: '无限'
+      requirements:
+        user:
+          dynamic:
+            enabled: true
+            format:
+              'true': '&a&l✓ &r&a'
+              'false': '&c&l✗ &r&c'
+          level:
+            enabled: true
+            name: '等级'
+            format:
+              main: '&c%state%%name%: &f%value%'
+              value:
+                single: '%min%+'
+                range: '%min%-%max%'
+          class:
+            enabled: true
+            name: '职业'
+            format:
+              main: '&c%state%%name%: %value%'
+              value:
+                separator: '&7/'
+                color: '&f'
+        item:
+          level:
+            enabled: true
+            name: '物品等级'
+            format:
+              main: '&c▸ %name%: %value%'
+              value:
+                single: '%min%+'
+                range: '%min% ~ %max%'
+          module:
+            enabled: true
+            name: '物品模块'
+            format:
+              main: '&c▸ %name%: %value%'
+              value:
+                separator: '&7/'
+                color: '&f'
+          type:
+            enabled: true
+            name: '物品类型'
+            format:
+              main: '&c▸ %name%: %value%'
+              value:
+                separator: '&7/'
+                color: '&f'
+          socket:
+            name: '宝石槽类型'
+            format:
+              main: '&c▸ %name%: %value%'

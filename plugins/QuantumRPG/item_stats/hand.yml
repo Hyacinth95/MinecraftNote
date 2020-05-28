@@ -1,0 +1,9 @@
+ONE:
+  enabled: true
+  name: '&f单手'
+  format: '&7手持方式: &f%name%'
+
+TWO:
+  enabled: true
+  name: '&e双手'
+  format: '&7手持方式: &f%name%'

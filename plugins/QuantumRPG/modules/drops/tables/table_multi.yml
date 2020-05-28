@@ -1,0 +1,63 @@
+# 掉落表名称
+name: '&dExample Multi-Item Table'
+# 组队状态下只roll一次
+roll-once: false
+# 等级罚款（等级超过怪物等级10级以上不掉落）
+level-penalty:
+  enabled: false
+  variance: 10
+# 世界白名单
+world-whitelist:
+- world
+- world_nether
+- world_the_end
+- flat
+- '*'
+# 生物群系白名单
+biome-whitelist:
+- '*'
+# 区域黑名单
+region-blacklist: []
+# 物品
+items:
+  # 随机品质
+  tier-random:
+    # 掉落率
+    chance: 5.0
+    # 物品ID
+    item-id: '训练长剑'
+    # 哪个模块下的物品
+    module-id: item_generator
+    # 设置根据怪物等级提高掉落指定等级的物品
+    min-level: '%mob_lvl% + 1'
+    max-level: '%mob_lvl% + 3'
+    # 附加条件
+    additional-conditions: []
+    # 掉落动作
+    actions-on-drop:
+      default:
+        target-selectors:
+          self:
+          - '[SELF]'
+        conditions:
+          list: []
+          actions-on-fail: 'null'
+        action-executors:
+        - '[BROADCAST] ~message: &e%cmi_user_display_name%&a在怪物身上获得了[&a训练长剑];'
+  # 随机符文
+  runes-random:
+    chance: 0
+    item-id: 'random'
+    module-id: runes
+    min-level: '1'
+    max-level: '2'
+    additional-conditions: []
+    actions-on-drop: {}
+  arrows-random:
+    chance: 0
+    item-id: 'random'
+    module-id: arrows
+    min-level: '1'
+    max-level: '1'
+    additional-conditions: []
+    actions-on-drop: {}
