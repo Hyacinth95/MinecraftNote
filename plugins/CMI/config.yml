@@ -253,7 +253,7 @@ Optimizations:
   OnLimitedItemUse:
     # 通知有关物料的左用途
     Inform: true
-  # 世界区块检测期间金庸消息输出
+  # 世界区块检测期间禁用消息输出
   DisableWorldChunkCheckInfo: false
   # 可以防止动物或怪物进入船上
   PreventEntityBoatEnter:
@@ -1476,7 +1476,7 @@ Cooldowns:
   # 如果设置为-1，代表此命令只能被执行一次
   # 管理员可以通过使用cmi.cooldownbypass.[commandname]权限节点绕过此限制
   # 请使用完整的命令名称，而不是别名
-  # 注意，如果有/cmi home之类的命令，并希望阻止玩家传送但不限制GUI的打开，请在命令后面加空格，如：cmi home :10
+  # 注意，如果���/cmi home之类的命令，并希望阻止玩家传送但不限制GUI的打开，请在命令后面加空格，如：cmi home :10
   Enabled: false
   List:
   - cmi heal:180
